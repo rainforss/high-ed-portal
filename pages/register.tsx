@@ -1,5 +1,6 @@
-import { Box, Button, Center, Heading } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, useToast } from "@chakra-ui/react";
 import { Formik, FormikProps, Form } from "formik";
+import { useRouter } from "next/router";
 import { NextPage } from "next/types";
 import * as React from "react";
 import TextInput from "../components/TextInput";
@@ -20,6 +21,8 @@ export interface RegistrationValues {
 interface IRegisterProps {}
 
 const Register: NextPage<IRegisterProps> = (props) => {
+  const router = useRouter();
+  const toast = useToast();
   return (
     <Center
       h="100vh"
@@ -42,8 +45,26 @@ const Register: NextPage<IRegisterProps> = (props) => {
             username: "",
           }}
           onSubmit={async (values, actions) => {
-            const result = await submitRegistration(values);
-            console.log(result);
+            try {
+              const result = await submitRegistration(values);
+              actions.setSubmitting(false);
+              toast({
+                title: "User account created.",
+                description: `We've created your account ${result.data.username} for you. Now redirecting you to home page.`,
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+                onCloseComplete: () => router.push("/"),
+              });
+            } catch (error: any) {
+              return toast({
+                title: error.response.data.error.name,
+                description: error.response.data.error.message,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              });
+            }
           }}
         >
           {(props: FormikProps<RegistrationValues>) => {
@@ -58,6 +79,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
               >
                 <TextInput
                   name="firstName"
+                  id="firstName"
                   type="text"
                   label="First Name"
                   w="50%"
@@ -65,6 +87,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 />
                 <TextInput
                   name="lastName"
+                  id="lastName"
                   type="text"
                   label="Last Name"
                   w="50%"
@@ -72,6 +95,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 />
                 <TextInput
                   name="email"
+                  id="email"
                   type="email"
                   label="Email"
                   w="50%"
@@ -79,6 +103,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 />
                 <TextInput
                   name="epbcId"
+                  id="epbcId"
                   type="text"
                   label="EPBC ID"
                   w="50%"
@@ -86,6 +111,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 />
                 <TextInput
                   name="username"
+                  id="username"
                   type="text"
                   label="Username"
                   w="100%"
@@ -93,6 +119,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 />
                 <TextInput
                   name="password"
+                  id="password"
                   type="password"
                   label="Password"
                   w="50%"
@@ -100,6 +127,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 />
                 <TextInput
                   name="confirmPassword"
+                  id="confirmPassword"
                   type="password"
                   label="Confirm Password"
                   w="50%"

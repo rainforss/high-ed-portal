@@ -5,32 +5,35 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import { FormikProps, useField } from "formik";
+import { useField } from "formik";
 import * as React from "react";
 
 interface ITextInputProps extends ChakraProps {
   type: React.HTMLInputTypeAttribute;
-  label: string;
+  id: string;
   name: string;
+  label: string;
+  autoComplete?: string;
 }
 
 const TextInput: React.FunctionComponent<ITextInputProps> = ({
   type,
-  label,
+  id,
   name,
+  label,
+  autoComplete,
   ...chakraProps
 }) => {
   const [field, meta, _helpers] = useField(name);
-
   return (
     <FormControl isInvalid={!!(meta.error && meta.touched)} {...chakraProps}>
-      <FormLabel htmlFor={name}>{label}</FormLabel>
+      <FormLabel htmlFor={id}>{label}</FormLabel>
       <Input
         {...field}
+        id={id}
         name={name}
         type={type}
-        bg="#fafafa"
-        boxShadow="inset 0px 1px 3px 0px rgb(0 0 0 / 8%)"
+        autoComplete={autoComplete || "off"}
       />
       {!!meta.error && <FormErrorMessage>{meta.error}</FormErrorMessage>}
     </FormControl>

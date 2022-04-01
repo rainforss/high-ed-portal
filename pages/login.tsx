@@ -1,10 +1,11 @@
-import { Box, Button, Center, Heading } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, useToast } from "@chakra-ui/react";
 import { Form, Formik, FormikProps } from "formik";
 import { useRouter } from "next/router";
 import { NextPage } from "next/types";
 import * as React from "react";
 import TextInput from "../components/TextInput";
 import { login } from "../services/user";
+import { withSessionSsr } from "../utils/withSession";
 
 export interface LoginValues {
   password: string;
@@ -13,7 +14,8 @@ export interface LoginValues {
 
 interface ILoginProps {}
 
-const Login: NextPage<ILoginProps> = (props) => {
+const Login: NextPage<ILoginProps> = () => {
+  const toast = useToast();
   const router = useRouter();
   return (
     <Center
@@ -23,7 +25,7 @@ const Login: NextPage<ILoginProps> = (props) => {
     >
       <Box w="30%" h="80vh" bg="white" borderRadius="10px" p="2rem">
         <Heading as="h2" p="1rem" py="2rem" fontWeight="normal">
-          Student Login
+          Member Login
         </Heading>
         <Formik
           initialValues={{
@@ -31,8 +33,28 @@ const Login: NextPage<ILoginProps> = (props) => {
             username: "",
           }}
           onSubmit={async (values, actions) => {
-            await login(values);
-            router.push("/");
+            try {
+              const result = await login(values);
+              console.log(result);
+              actions.setSubmitting(false);
+              toast({
+                title: "Successfully Logged In.",
+                description: `Welcome back ${result.data.fullname}. Now redirecting you to home page.`,
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+                onCloseComplete: () => router.back(),
+              });
+            } catch (error: any) {
+              console.log(error);
+              return toast({
+                title: error.error.name,
+                description: error.error.message,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              });
+            }
           }}
         >
           {(props: FormikProps<LoginValues>) => {
@@ -47,15 +69,19 @@ const Login: NextPage<ILoginProps> = (props) => {
               >
                 <TextInput
                   name="username"
+                  id="username"
                   type="text"
                   label="Username"
+                  autoComplete="username"
                   w="100%"
                   p="1rem"
                 />
                 <TextInput
                   name="password"
+                  id="password"
                   type="password"
                   label="Password"
+                  autoComplete="current-password"
                   w="100%"
                   p="1rem"
                 />
@@ -79,5 +105,24 @@ const Login: NextPage<ILoginProps> = (props) => {
     </Center>
   );
 };
+
+export const getServerSideProps = withSessionSsr(
+  async function getServerSideProps({ req }) {
+    const user = req.session.user;
+
+    if (user) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+        props: {},
+      };
+    }
+    return {
+      props: {},
+    };
+  }
+);
 
 export default Login;
