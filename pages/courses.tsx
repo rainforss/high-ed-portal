@@ -1,15 +1,15 @@
-import type { NextPage } from "next";
-import "isomorphic-unfetch";
-import { withSessionSsr } from "../utils/withSession";
-import { CurrentUser } from "../types/dynamicsEntities";
 import { Box } from "@chakra-ui/react";
+import { NextPage } from "next";
+import * as React from "react";
 import Layout from "../components/Layout";
+import { CurrentUser } from "../types/dynamicsEntities";
+import { withSessionSsr } from "../utils/withSession";
 
-interface IHomeProps {
+interface ICoursesProps {
   user: CurrentUser;
 }
 
-const Home: NextPage<IHomeProps> = (props) => {
+const Courses: NextPage<ICoursesProps> = (props) => {
   return (
     <Layout user={props.user}>
       <Box>Courses</Box>
@@ -37,4 +37,4 @@ export const getServerSideProps = withSessionSsr(
   }
 );
 
-export default Home;
+export default Courses;
