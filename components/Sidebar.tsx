@@ -1,7 +1,8 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { NavigationItem } from "../types/components";
-import { ImBooks, ImCalendar } from "react-icons/im";
+import { ImBooks, ImCalendar, ImFileZip } from "react-icons/im";
+import { IoIosSchool } from "react-icons/io";
 import NavItem from "./NavItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,8 +11,9 @@ interface ISidebarProps {}
 
 const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   const navItems: NavigationItem[] = [
+    { label: "Programs", url: "/programs", icon: IoIosSchool },
     { label: "Course Sections", url: "/courses", icon: ImBooks },
-    { label: "Academic Periods", url: "/", icon: ImCalendar },
+    { label: "My Applications", url: "/applications", icon: ImFileZip },
   ];
 
   const router = useRouter();

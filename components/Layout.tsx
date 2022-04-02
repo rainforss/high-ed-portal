@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import * as React from "react";
 import { CurrentUser } from "../types/dynamicsEntities";
+import Canvas from "./Canvas";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -13,7 +14,7 @@ const Layout: React.FunctionComponent<ILayoutProps> = (props) => {
     <Box h="100vh" w="100%">
       <Sidebar />
       <Header username={props.user?.username} />
-      {props.children}
+      <Canvas>{props.children}</Canvas>
     </Box>
   );
 };

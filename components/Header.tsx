@@ -30,6 +30,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
       top="0"
       right="0"
       style={{ gap: "20px" }}
+      zIndex={99}
     >
       <IconButton aria-label="Bright-Mode" icon={<SunIcon color="#f58d42" />} />
       <Box position="relative">

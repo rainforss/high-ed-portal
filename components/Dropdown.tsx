@@ -22,6 +22,7 @@ const Dropdown: React.FunctionComponent<IDropdownProps> = (props) => {
       borderRadius="0.375rem"
       h="180px"
       bg="#bdebaa"
+      zIndex={15}
     >
       <Button leftIcon={<ArrowForwardIcon />} w="90%" h="40px">
         <Text w="50%" textAlign="start">
