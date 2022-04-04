@@ -32,3 +32,5 @@ export const registrationSchema = Yup.object().shape({
     "Passwords must match"
   ),
 });
+
+export const applicationSchema = Yup.object().shape({});

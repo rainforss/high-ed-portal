@@ -12,7 +12,7 @@ interface ISidebarProps {}
 const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   const navItems: NavigationItem[] = [
     { label: "Programs", url: "/programs", icon: IoIosSchool },
-    { label: "Course Sections", url: "/courses", icon: ImBooks },
+
     { label: "My Applications", url: "/applications", icon: ImFileZip },
   ];
 
@@ -51,7 +51,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
         {navItems.map((ni, index) => (
           <NavItem
             navItem={ni}
-            active={router.pathname === ni.url}
+            active={router.pathname.includes(ni.url)}
             key={ni.label}
           />
         ))}

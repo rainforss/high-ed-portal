@@ -11,7 +11,7 @@ const Canvas: React.FunctionComponent<ICanvasProps> = (props) => {
       h="calc(100vh - 80px)"
       top="80px"
       left="350px"
-      overflowY="scroll"
+      overflow="hidden"
       p={8}
     >
       {props.children}

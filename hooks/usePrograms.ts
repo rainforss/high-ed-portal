@@ -2,7 +2,11 @@ import useSWR from "swr";
 import { fetcher } from "../utils/dataFetcher";
 
 export const usePrograms = () => {
-  const { data, error, mutate } = useSWR(`/api/programs`, fetcher);
+  const { data, error, mutate } = useSWR(`/api/programs`, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
 
   return {
     programs: data,

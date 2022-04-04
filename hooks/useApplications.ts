@@ -1,9 +1,13 @@
 import useSWR from "swr";
 import { fetcher } from "../utils/dataFetcher";
 
-export const useApplications = (contactId: string) => {
+export const useApplications = (contactId?: string, applicationId?: string) => {
   const { data, error, mutate } = useSWR(
-    `/api/contact/${contactId}/applications`,
+    contactId
+      ? `/api/contact/${contactId}/applications`
+      : applicationId
+      ? `/api/applications/${applicationId}`
+      : null,
     fetcher
   );
 

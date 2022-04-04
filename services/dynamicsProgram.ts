@@ -7,7 +7,7 @@ export const dynamicsProgram = (accessToken: string) => {
       const programs = await retrieveMultiple(
         config,
         "mshied_programs",
-        `$filter=statecode eq 0&$select=mshied_name,mshied_code,bsi_interviewrequired&$orderby=mshied_name asc`
+        `$filter=statecode eq 0&$select=mshied_name,mshied_code,bsi_interviewrequired,bsi_applicationfee,bsi_commitmentfee&$expand=mshied_ProgramRequirement_Programid_mshie($select=mshied_name,mshied_isrequired)&$orderby=mshied_name asc`
       );
 
       return programs.value;

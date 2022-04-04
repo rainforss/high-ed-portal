@@ -10,23 +10,30 @@ import {
   ModalFooter,
 } from "@chakra-ui/react";
 import * as React from "react";
+import { useDocuments } from "../hooks/useDocuments";
+import { Application } from "../types/dynamicsEntities";
 
 interface IApplicationModalProps {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
+  application: Application;
 }
 
 const ApplicationModal: React.FunctionComponent<IApplicationModalProps> = ({
   isOpen,
   onOpen,
   onClose,
+  application,
 }) => {
   //   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { documents, isError, isLoading } = useDocuments(
+    application.bsi_studentapplicationid
+  );
+
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
-
       <Modal isOpen={isOpen} onClose={onClose} size="2xl">
         <ModalOverlay />
         <ModalContent>

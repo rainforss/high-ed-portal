@@ -1,4 +1,4 @@
-import { ChevronDownIcon, SunIcon } from "@chakra-ui/icons";
+import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Avatar,
   Box,
@@ -32,7 +32,10 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
       style={{ gap: "20px" }}
       zIndex={99}
     >
-      <IconButton aria-label="Bright-Mode" icon={<SunIcon color="#f58d42" />} />
+      <IconButton
+        aria-label="Bright-Mode"
+        icon={<BellIcon color="#f58d42" />}
+      />
       <Box position="relative">
         <Button
           rightIcon={<ChevronDownIcon />}
