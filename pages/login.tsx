@@ -43,7 +43,7 @@ const Login: NextPage<ILoginProps> = () => {
                 status: "success",
                 duration: 3000,
                 isClosable: true,
-                onCloseComplete: () => router.back(),
+                onCloseComplete: () => router.push("/applications"),
               });
             } catch (error: any) {
               console.log(error);

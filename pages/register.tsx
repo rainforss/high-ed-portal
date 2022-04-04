@@ -54,7 +54,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                 status: "success",
                 duration: 3000,
                 isClosable: true,
-                onCloseComplete: () => router.push("/"),
+                onCloseComplete: () => router.push("/applications"),
               });
             } catch (error: any) {
               return toast({
