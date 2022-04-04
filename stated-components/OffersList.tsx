@@ -10,6 +10,7 @@ import {
   IconButton,
   Skeleton,
   Flex,
+  Tooltip,
 } from "@chakra-ui/react";
 import { FcViewDetails } from "react-icons/fc";
 import * as React from "react";
@@ -86,34 +87,38 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                       alignItems="center"
                       style={{ gap: "1rem" }}
                     >
-                      <IconButton
-                        aria-label="Accept"
-                        icon={<CheckIcon />}
-                        bgColor="#7dd956"
-                        color="white"
-                        fontSize="2xl"
-                        onClick={async () => {
-                          setUpdating(true);
-                          await acceptOffer(a.bsi_offerid);
-                          setUpdating(false);
-                        }}
-                        isLoading={updating}
-                        disabled={updating || a.bsi_offerstatus !== 861560000}
-                      />{" "}
-                      <IconButton
-                        aria-label="Reject"
-                        icon={<SmallCloseIcon />}
-                        bgColor="red"
-                        color="white"
-                        fontSize="3xl"
-                        onClick={async () => {
-                          setUpdating(true);
-                          rejectOffer(a.bsi_offerid);
-                          setUpdating(false);
-                        }}
-                        isLoading={updating}
-                        disabled={updating || a.bsi_offerstatus !== 861560000}
-                      />{" "}
+                      <Tooltip hasArrow label="Accept Offer" bg="#7dd956">
+                        <IconButton
+                          aria-label="Accept"
+                          icon={<CheckIcon />}
+                          bgColor="#7dd956"
+                          color="white"
+                          fontSize="2xl"
+                          onClick={async () => {
+                            setUpdating(true);
+                            await acceptOffer(a.bsi_offerid);
+                            setUpdating(false);
+                          }}
+                          isLoading={updating}
+                          disabled={updating || a.bsi_offerstatus !== 861560000}
+                        />
+                      </Tooltip>{" "}
+                      <Tooltip hasArrow label="Reject Offer" bg="red">
+                        <IconButton
+                          aria-label="Reject"
+                          icon={<SmallCloseIcon />}
+                          bgColor="red"
+                          color="white"
+                          fontSize="3xl"
+                          onClick={async () => {
+                            setUpdating(true);
+                            rejectOffer(a.bsi_offerid);
+                            setUpdating(false);
+                          }}
+                          isLoading={updating}
+                          disabled={updating || a.bsi_offerstatus !== 861560000}
+                        />
+                      </Tooltip>{" "}
                       {a.bsi_StudentApplication.bsi_name}
                     </Td>
                     <Td>{a.bsi_Program.mshied_name}</Td>
