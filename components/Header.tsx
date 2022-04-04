@@ -5,6 +5,15 @@ import {
   Button,
   Flex,
   IconButton,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -30,12 +39,27 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
       top="0"
       right="0"
       style={{ gap: "20px" }}
-      zIndex={99}
+      zIndex={10}
     >
-      <IconButton
-        aria-label="Bright-Mode"
-        icon={<BellIcon color="#f58d42" />}
-      />
+      <Popover>
+        <PopoverTrigger>
+          <IconButton
+            aria-label="Bright-Mode"
+            icon={<BellIcon color="#f58d42" />}
+          />
+        </PopoverTrigger>
+        <Portal>
+          <PopoverContent zIndex={80} bgColor="white">
+            <PopoverArrow />
+            <PopoverHeader>Header</PopoverHeader>
+            <PopoverCloseButton />
+            <PopoverBody>
+              <Button colorScheme="blue">Button</Button>
+            </PopoverBody>
+            <PopoverFooter>This is the footer</PopoverFooter>
+          </PopoverContent>
+        </Portal>
+      </Popover>
       <Box position="relative">
         <Button
           rightIcon={<ChevronDownIcon />}

@@ -109,6 +109,17 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
                   </Stat>
                 </Flex>
               </Box>
+              <Box>
+                <Text
+                  fontWeight="bold"
+                  mb={4}
+                  color={program.bsi_interviewrequired ? "orange" : "inherit"}
+                >
+                  {program.bsi_interviewrequired
+                    ? "Interview Required"
+                    : "Interview Not Required"}
+                </Text>
+              </Box>
             </VStack>
           </ModalBody>
 
