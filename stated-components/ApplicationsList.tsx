@@ -107,7 +107,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
               <Button
                 as="a"
                 href="/applications/new"
-                bgColor="#7dd956"
+                bgColor="#6baf92"
                 color="white"
                 px={6}
                 leftIcon={<PlusSquareIcon />}

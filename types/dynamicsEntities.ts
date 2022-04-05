@@ -78,3 +78,20 @@ export interface ProgramLevel {
   mshied_name: string;
   mshied_programlevelid: string;
 }
+
+export interface Offer {
+  bsi_name: string;
+  bsi_offerid: string;
+  bsi_Program: {
+    mshied_name: string;
+    mshied_programid: string;
+  };
+  bsi_ProgramHistoryCondition: {
+    bsi_name: string;
+    mshied_programid: string;
+  };
+  bsi_AcademicPeriod: AcademicPeriod;
+  bsi_expirationdate: string;
+  bsi_offerstatus: number;
+  "bsi_offerstatus@OData.Community.Display.V1.FormattedValue": string;
+}

@@ -4,6 +4,7 @@ import { withSessionSsr } from "../utils/withSession";
 import { CurrentUser } from "../types/dynamicsEntities";
 import { Box } from "@chakra-ui/react";
 import Layout from "../components/Layout";
+import DashBoard from "../stated-components/Dashboard";
 
 interface IHomeProps {
   user: CurrentUser;
@@ -12,7 +13,7 @@ interface IHomeProps {
 const Home: NextPage<IHomeProps> = (props) => {
   return (
     <Layout user={props.user}>
-      <Box>Home</Box>
+      <DashBoard contactId={props.user._id} />
     </Layout>
   );
 };

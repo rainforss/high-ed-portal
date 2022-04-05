@@ -87,11 +87,11 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                       alignItems="center"
                       style={{ gap: "1rem" }}
                     >
-                      <Tooltip hasArrow label="Accept Offer" bg="#7dd956">
+                      <Tooltip hasArrow label="Accept Offer" bg="#6baf92">
                         <IconButton
                           aria-label="Accept"
                           icon={<CheckIcon />}
-                          bgColor="#7dd956"
+                          bgColor="#6baf92"
                           color="white"
                           fontSize="2xl"
                           onClick={async () => {

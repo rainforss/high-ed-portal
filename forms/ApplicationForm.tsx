@@ -250,7 +250,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     disabled={isSubmitting}
                     left="2.5rem"
                     bottom="2.5rem"
-                    bgColor="#7dd956"
+                    bgColor="#6baf92"
                     color="white"
                     px="2rem"
                     py="1.5rem"
@@ -265,7 +265,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     disabled={!applicationId}
                     left="2.5rem"
                     bottom="2.5rem"
-                    bgColor="#7dd956"
+                    bgColor="#6baf92"
                     color="white"
                     px="2rem"
                     py="1.5rem"
@@ -287,6 +287,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                   href="/applications"
                   disabled={isSubmitting}
                   isLoading={isSubmitting}
+                  variant="outline"
                 >
                   {!!applicationId ? "EXIT" : "CANCEL"}
                 </Button>
