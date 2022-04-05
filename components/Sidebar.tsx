@@ -2,7 +2,7 @@ import { Flex, Icon, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { NavigationItem } from "../types/components";
 import { ImFileZip } from "react-icons/im";
-import { MdLocalOffer } from "react-icons/md";
+import { MdDashboard, MdLocalOffer } from "react-icons/md";
 import { IoIosSchool } from "react-icons/io";
 import NavItem from "./NavItem";
 import Image from "next/image";
@@ -12,12 +12,14 @@ interface ISidebarProps {}
 
 const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   const navItems: NavigationItem[] = [
-    { label: "Programs", url: "/programs", icon: IoIosSchool },
-    { label: "My Applications", url: "/applications", icon: ImFileZip },
-    { label: "My Offers", url: "/offers", icon: MdLocalOffer },
+    { label: "Dashboard", url: "", icon: MdDashboard },
+    { label: "Programs", url: "programs", icon: IoIosSchool },
+    { label: "My Applications", url: "applications", icon: ImFileZip },
+    { label: "My Offers", url: "offers", icon: MdLocalOffer },
   ];
 
   const router = useRouter();
+  console.log(router.pathname);
 
   return (
     <Flex
@@ -52,7 +54,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
         {navItems.map((ni, index) => (
           <NavItem
             navItem={ni}
-            active={router.pathname.includes(ni.url)}
+            active={router.pathname.split("/")[1] === ni.url}
             key={ni.label}
           />
         ))}

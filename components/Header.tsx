@@ -22,6 +22,7 @@ import Dropdown from "./Dropdown";
 
 interface IHeaderProps {
   username?: string;
+  userLoading?: boolean;
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
@@ -61,22 +62,36 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
         </Portal>
       </Popover>
       <Box position="relative">
-        <Button
-          rightIcon={<ChevronDownIcon />}
-          p={4}
-          position="relative"
-          w="200px"
-          onClick={onToggle}
-        >
-          {props.username && (
-            <Avatar
-              size="sm"
-              name={props.username}
-              src="https://bit.ly/dan-abramov"
-            />
-          )}
-          <Text ml={4}>{props.username}</Text>
-        </Button>
+        {props.username && !props.userLoading && (
+          <Button
+            rightIcon={<ChevronDownIcon />}
+            p={4}
+            position="relative"
+            w="200px"
+            isLoading={props.userLoading}
+            disabled={props.userLoading}
+            onClick={onToggle}
+          >
+            {props.username && (
+              <Avatar
+                size="sm"
+                name={props.username}
+                src="https://bit.ly/dan-abramov"
+              />
+            )}
+            <Text ml={4}>{props.username}</Text>
+          </Button>
+        )}
+        {!props.username && !props.userLoading && (
+          <>
+            <Button mr={4} bg="royalblue" color="white" as="a" href="/login">
+              Login
+            </Button>
+            <Button bg="#7dd956" color="white" as="a" href="/register">
+              Register
+            </Button>
+          </>
+        )}
         {isOpen && <Dropdown />}
       </Box>
     </Flex>

@@ -100,7 +100,11 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                             setUpdating(false);
                           }}
                           isLoading={updating}
-                          disabled={updating || a.bsi_offerstatus !== 861560000}
+                          disabled={
+                            updating ||
+                            a.bsi_offerstatus !== 861560000 ||
+                            !!a.bsi_ProgramHistoryCondition
+                          }
                         />
                       </Tooltip>{" "}
                       <Tooltip hasArrow label="Reject Offer" bg="red">

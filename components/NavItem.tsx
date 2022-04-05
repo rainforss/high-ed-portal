@@ -21,7 +21,7 @@ const NavItem: React.FunctionComponent<INavItemProps> = ({
       borderRadius="15px"
       style={{ gap: "15px" }}
       as="a"
-      href={navItem.url}
+      href={"/" + navItem.url}
     >
       <Icon as={navItem.icon} fontSize="1.5rem" />
       <Text as="span" w="50%">

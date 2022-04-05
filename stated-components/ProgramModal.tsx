@@ -124,7 +124,7 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button colorScheme="blue" mr={3} as="a" href="/applications/new">
               Apply
             </Button>
             <Button variant="ghost" onClick={onClose}>

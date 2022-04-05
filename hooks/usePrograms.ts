@@ -1,12 +1,16 @@
 import useSWR from "swr";
 import { fetcher } from "../utils/dataFetcher";
 
-export const usePrograms = () => {
-  const { data, error, mutate } = useSWR(`/api/programs`, fetcher, {
-    revalidateIfStale: false,
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-  });
+export const usePrograms = (isContinuingEd?: boolean) => {
+  const { data, error, mutate } = useSWR(
+    `/api/programs?isContinuingEd=${isContinuingEd ? "true" : "false"}`,
+    fetcher,
+    {
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  );
 
   return {
     programs: data,

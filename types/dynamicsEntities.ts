@@ -54,6 +54,10 @@ export interface Application extends Entity {
   };
   bsi_AcademicPeriod: AcademicPeriod;
   bsi_ProgramLevel: ProgramLevel;
+  bsi_PrerequisiteProgram: {
+    mshied_name: string;
+    mshied_programid: string;
+  };
 }
 
 export class ApplicationDTO implements Entity {

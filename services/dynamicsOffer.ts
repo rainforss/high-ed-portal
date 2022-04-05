@@ -12,7 +12,7 @@ export const dynamicsOffer = (accessToken: string) => {
       const offers = await retrieveMultiple(
         config,
         "bsi_offers",
-        `$filter=statecode eq 0 and _bsi_applicant_value eq '${applicantId}'&$select=bsi_name,bsi_expirationdate,bsi_offerstatus&$expand=bsi_Program($select=mshied_name),bsi_StudentApplication($select=bsi_name)`,
+        `$filter=statecode eq 0 and _bsi_applicant_value eq '${applicantId}'&$select=bsi_name,bsi_expirationdate,bsi_offerstatus&$expand=bsi_Program($select=mshied_name),bsi_StudentApplication($select=bsi_name),bsi_ProgramHistoryCondition($select=bsi_name)`,
         { representation: true }
       );
 

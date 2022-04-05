@@ -56,7 +56,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
               <Thead>
                 <Tr>
                   <Th>Program</Th>
-                  <Th>Program Level</Th>
+                  <Th>Prerequisite Program</Th>
                   <Th>Academic Period</Th>
                   <Th>Application Fee Paid</Th>
                   <Th>Commitment Fee Paid</Th>
@@ -85,9 +85,9 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                         {a.bsi_Program.mshied_name}
                       </Td>
                       <Td>
-                        {a.bsi_ProgramLevel
-                          ? a.bsi_ProgramLevel.mshied_name
-                          : "TBD"}
+                        {a.bsi_PrerequisiteProgram
+                          ? a.bsi_PrerequisiteProgram.mshied_name
+                          : "None"}
                       </Td>
                       <Td>{a.bsi_AcademicPeriod.mshied_name}</Td>
                       <Td>{a.bsi_applicationfeepaid ? "Yes" : "No"}</Td>

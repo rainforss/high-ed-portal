@@ -30,7 +30,15 @@ async function programsRoute(req: NextApiRequest, res: NextApiResponse) {
       error.name = "Server Error";
       throw error;
     }
-    const programs = await dynamicsProgram(tokenResponse.accessToken).getAll();
+    const { isContinuingEd } = req.query;
+
+    let continuingEd = false;
+    if (isContinuingEd === "true") {
+      continuingEd = true;
+    }
+    const programs = await dynamicsProgram(tokenResponse.accessToken).getAll(
+      continuingEd
+    );
 
     await disconnect();
 

@@ -1,5 +1,5 @@
 import { ClientCredentialRequest } from "@azure/msal-node";
-import { Box } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import { NextPage } from "next";
 import * as React from "react";
 import Layout from "../components/Layout";
@@ -19,9 +19,18 @@ interface IProgramsProps {
 
 const Programs: NextPage<IProgramsProps> = (props) => {
   const { user, isError, isLoading } = useCurrentUser();
-  console.log(user);
+  const toast = useToast();
+  if (isError) {
+    toast({
+      title: isError.name,
+      description: isError.message,
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+  }
   return (
-    <Layout user={user}>
+    <Layout user={user} userLoading={isLoading}>
       <ProgramsList />
     </Layout>
   );

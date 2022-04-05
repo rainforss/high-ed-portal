@@ -26,7 +26,7 @@ interface IProgramsListProps {}
 
 const ProgramsList: React.FunctionComponent<IProgramsListProps> = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { programs, isError, isLoading } = usePrograms();
+  const { programs, isError, isLoading } = usePrograms(true);
   const [selectedProgram, setSelectedProgram] = React.useState<
     Program | undefined
   >();

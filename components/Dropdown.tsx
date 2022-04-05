@@ -2,14 +2,16 @@ import {
   ArrowForwardIcon,
   InfoOutlineIcon,
   QuestionOutlineIcon,
-  SunIcon,
 } from "@chakra-ui/icons";
-import { Button, Flex, IconButton, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
+import axios from "axios";
+import { useRouter } from "next/router";
 import * as React from "react";
 
 interface IDropdownProps {}
 
 const Dropdown: React.FunctionComponent<IDropdownProps> = (props) => {
+  const router = useRouter();
   return (
     <Flex
       position="absolute"
@@ -24,7 +26,15 @@ const Dropdown: React.FunctionComponent<IDropdownProps> = (props) => {
       bg="#bdebaa"
       zIndex={90}
     >
-      <Button leftIcon={<ArrowForwardIcon />} w="90%" h="40px">
+      <Button
+        leftIcon={<ArrowForwardIcon />}
+        w="90%"
+        h="40px"
+        onClick={async () => {
+          await axios.get("/api/user/logout");
+          router.push("/");
+        }}
+      >
         <Text w="50%" textAlign="start">
           Sign Out
         </Text>

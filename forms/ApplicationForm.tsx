@@ -1,7 +1,13 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertDialog,
+  AlertIcon,
+  AlertTitle,
   Box,
   Button,
   Center,
+  CloseButton,
   Skeleton,
   Spinner,
   Text,
@@ -50,7 +56,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
     programs,
     isError: isProgramsError,
     isLoading: isProgramsLoading,
-  } = usePrograms();
+  } = usePrograms(true);
   const {
     programLevels,
     isError: isProgramLevelsError,
@@ -76,7 +82,18 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
           <Text mt={6}>Loading Application Information</Text>
         </Center>
       )}
-      {(!isApplicationLoading || !applicationId) && (
+      {!isApplicationLoading && !!isApplicationError && (
+        <Box h="100%">
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle mr={2}>NOT FOUND</AlertTitle>
+            <AlertDescription>
+              Application not found from database.
+            </AlertDescription>
+          </Alert>
+        </Box>
+      )}
+      {(!isApplicationLoading || !applicationId) && !isApplicationError && (
         <Formik
           initialValues={
             applications
@@ -268,6 +285,8 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                   position="absolute"
                   as="a"
                   href="/applications"
+                  disabled={isSubmitting}
+                  isLoading={isSubmitting}
                 >
                   {!!applicationId ? "EXIT" : "CANCEL"}
                 </Button>

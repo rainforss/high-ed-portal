@@ -8,6 +8,7 @@ import Sidebar from "./Sidebar";
 
 interface ILayoutProps {
   user?: CurrentUser;
+  userLoading?: boolean;
 }
 
 const Layout: React.FunctionComponent<ILayoutProps> = (props) => {
@@ -18,7 +19,10 @@ const Layout: React.FunctionComponent<ILayoutProps> = (props) => {
       </Head>
       <Box h="100vh" w="100%">
         <Sidebar />
-        <Header username={props.user?.username} />
+        <Header
+          username={props.user?.username}
+          userLoading={props.userLoading}
+        />
         <Canvas>{props.children}</Canvas>
       </Box>
     </>
