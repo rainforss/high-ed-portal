@@ -48,6 +48,7 @@ export interface Application extends Entity {
   bsi_applicationfeepaid: boolean;
   bsi_commitmentfeepaid: boolean;
   bsi_packagecomplete: boolean;
+  bsi_missingdocuments: string;
   bsi_Program: {
     mshied_name: string;
     mshied_programid: string;

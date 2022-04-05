@@ -37,6 +37,7 @@ type ApplicationValues = {
   programLevelId: string;
   academicPeriodId: string;
   applicantId: string;
+  missingDocuments?: string;
 };
 
 const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
@@ -106,6 +107,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                   academicPeriodId:
                     applications.bsi_AcademicPeriod.mshied_academicperiodid,
                   applicantId: applications.bsi_Applicant.contactid,
+                  missingDocuments: applications.bsi_missingdocuments,
                 }
               : {
                   name: "",
@@ -113,6 +115,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                   programLevelId: "",
                   academicPeriodId: "",
                   applicantId: applicantId,
+                  missingDocuments: "",
                 }
           }
           onSubmit={async (values, actions) => {
@@ -240,6 +243,18 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     label="Academic Period"
                     disabled={!!applicationId}
                     w="100%"
+                    p="1rem"
+                  />
+                )}
+
+                {!isProgramLevelsLoading && !!applicationId && (
+                  <TextInput
+                    name="missingDocuments"
+                    id="missingDocuments"
+                    type="text"
+                    label="Missing Documents"
+                    disabled={!!applicationId}
+                    w="50%"
                     p="1rem"
                   />
                 )}

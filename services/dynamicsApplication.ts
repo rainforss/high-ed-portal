@@ -32,7 +32,7 @@ export const dynamicsApplication = (accessToken: string) => {
       const studentApplications = await retrieveMultiple(
         config,
         "bsi_studentapplications",
-        `$filter=statecode eq 0 and _bsi_applicant_value eq '${contactId}'&$select=bsi_name,bsi_applicationstatus,bsi_applicationfeepaid,bsi_commitmentfeepaid,bsi_packagecomplete&$expand=bsi_Program($select=mshied_name),bsi_AcademicPeriod($select=mshied_name),bsi_ProgramLevel($select=mshied_name),bsi_Applicant($select=fullname),bsi_PrerequisiteProgram($select=mshied_name)`,
+        `$filter=statecode eq 0 and _bsi_applicant_value eq '${contactId}'&$select=bsi_name,bsi_applicationstatus,bsi_applicationfeepaid,bsi_commitmentfeepaid,bsi_packagecomplete,bsi_missingdocuments&$expand=bsi_Program($select=mshied_name),bsi_AcademicPeriod($select=mshied_name),bsi_ProgramLevel($select=mshied_name),bsi_Applicant($select=fullname),bsi_PrerequisiteProgram($select=mshied_name)`,
         { representation: true }
       );
 
