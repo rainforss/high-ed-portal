@@ -23,7 +23,7 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
     <Box
       position="relative"
       color="white"
-      bgColor="#7070ff"
+      bgColor="#767676"
       borderRadius="15px"
     >
       <Flex p={4} align="center" justifyContent="space-between">
@@ -64,12 +64,16 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
         <Flex>
           <Badge
             mr={4}
+            bgColor="white"
+            color={application.bsi_applicationfeepaid ? "green" : "red.500"}
             colorScheme={application.bsi_applicationfeepaid ? "green" : "red"}
           >
             Application Fee{" "}
             {application.bsi_applicationfeepaid ? "PAID" : "UNPAID"}
           </Badge>
           <Badge
+            bgColor="white"
+            color={application.bsi_applicationfeepaid ? "green" : "red.500"}
             colorScheme={application.bsi_commitmentfeepaid ? "green" : "red"}
           >
             Commitment Fee{" "}

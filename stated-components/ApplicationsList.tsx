@@ -52,7 +52,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
         )}
         {!isLoading && (
           <>
-            <Table variant="striped" colorScheme="linkedin">
+            <Table variant="striped" colorScheme="red">
               <Thead>
                 <Tr>
                   <Th>Applied Program</Th>
@@ -107,7 +107,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
               <Button
                 as="a"
                 href="/applications/new"
-                bgColor="#6baf92"
+                bgColor="#e92731"
                 color="white"
                 px={6}
                 leftIcon={<PlusSquareIcon />}

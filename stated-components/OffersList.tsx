@@ -67,7 +67,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
           </Flex>
         )}
         {!isLoading && (
-          <Table variant="striped" colorScheme="linkedin">
+          <Table variant="striped" colorScheme="red">
             <Thead>
               <Tr>
                 <Th>Application</Th>
@@ -88,46 +88,15 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                       alignItems="center"
                       style={{ gap: "1rem" }}
                     >
-                      <Tooltip hasArrow label="Accept Offer" bg="#6baf92">
-                        <IconButton
-                          aria-label="Accept"
-                          icon={<CheckIcon />}
-                          bgColor="#6baf92"
-                          color="white"
-                          fontSize="2xl"
-                          onClick={async () => {
-                            setUpdating(true);
-                            await acceptOffer(a.bsi_offerid);
-                            setUpdating(false);
-                          }}
-                          isLoading={updating}
-                          disabled={
-                            updating ||
-                            (a.bsi_offerstatus !== 861560000 &&
-                              a.bsi_offerstatus !== 861560004)
-                          }
-                        />
-                      </Tooltip>{" "}
-                      <Tooltip hasArrow label="Reject Offer" bg="red">
-                        <IconButton
-                          aria-label="Reject"
-                          icon={<SmallCloseIcon />}
-                          bgColor="red"
-                          color="white"
-                          fontSize="3xl"
-                          onClick={async () => {
-                            setUpdating(true);
-                            rejectOffer(a.bsi_offerid);
-                            setUpdating(false);
-                          }}
-                          isLoading={updating}
-                          disabled={
-                            updating ||
-                            (a.bsi_offerstatus !== 861560000 &&
-                              a.bsi_offerstatus !== 861560004)
-                          }
-                        />
-                      </Tooltip>{" "}
+                      <IconButton
+                        aria-label="Details"
+                        as="a"
+                        icon={<Icon as={FcViewDetails} color="red.500" />}
+                        bgColor="white"
+                        color="red"
+                        fontSize="2xl"
+                        href={`/offers/${a.bsi_offerid}`}
+                      />{" "}
                       {a.bsi_StudentApplication.bsi_name}
                     </Td>
                     <Td>{a.bsi_Program.mshied_name}</Td>

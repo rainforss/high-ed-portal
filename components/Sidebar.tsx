@@ -1,4 +1,4 @@
-import { Flex, Icon, Text } from "@chakra-ui/react";
+import { Box, Flex, Icon, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { NavigationItem } from "../types/components";
 import { ImFileZip } from "react-icons/im";
@@ -19,7 +19,6 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   ];
 
   const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <Flex
@@ -38,17 +37,30 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
       borderRight="1px solid #ebe6e6"
       color="#63605f"
     >
-      <Flex w="90%" justify="center" align="center" style={{ gap: "20px" }}>
+      <Flex
+        w="90%"
+        flexDirection="column"
+        justify="center"
+        align="center"
+        style={{ gap: "20px" }}
+      >
         <Image
-          src="/betach_small_logo.png"
-          width="60px"
-          height="50px"
+          src="/York_University.png"
+          width="120px"
+          height="120px"
           alt="Betach Institute Logo"
           loading="eager"
         />
-        <Text as="span" fontWeight="bold" fontSize="1.2rem">
-          Betach Institute
+        <Text
+          as="span"
+          fontWeight="bold"
+          fontSize="1.2rem"
+          textTransform="uppercase"
+        >
+          York University
         </Text>
+        <Box w="100%" h="1px" bgColor="#e92731"></Box>
+        <Text as="small">School of Continuing Studies</Text>
       </Flex>
       <Flex w="90%" flexDir="column" style={{ gap: "20px" }}>
         {navItems.map((ni, index) => (

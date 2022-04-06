@@ -11,7 +11,7 @@ const OfferCard: React.FunctionComponent<IOfferCardProps> = ({ offer }) => {
     <Box
       position="relative"
       color="white"
-      bgColor="#6baf92"
+      bgColor="#e92731"
       borderRadius="15px"
     >
       <Flex p={4} align="center" justifyContent="space-between">

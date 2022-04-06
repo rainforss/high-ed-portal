@@ -30,7 +30,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
 
   return (
     <Flex
-      w="calc(100% - 350px)"
+      w="calc(100% - 300px)"
       h="80px"
       px={6}
       borderBottom="1px solid #ebe6e6"

@@ -1,4 +1,12 @@
-import { Box, Center, Flex, Spinner, Text } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Center,
+  Flex,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import * as React from "react";
 import ApplicationCard from "../components/ApplicationCard";
 import OfferCard from "../components/OfferCard";
@@ -21,6 +29,9 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
     isLoading: isOffersLoading,
     isError: isOffersError,
   } = useOffers(props.contactId);
+
+  console.log(offers);
+
   return (
     <Flex h="100%" justify="space-around">
       <Flex
@@ -80,6 +91,17 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
             <Text mt={6}>Loading Pending Offer Information</Text>
           </Center>
         )}
+        {!!offers &&
+          !offers.find(
+            (o: any) =>
+              o["bsi_offerstatus@OData.Community.Display.V1.FormattedValue"] ===
+              "Open"
+          ) &&
+          !isOffersLoading && (
+            <Alert status="info">
+              <AlertIcon /> You have no open offers at this moment.
+            </Alert>
+          )}
         {!!offers && (
           <Flex flexDirection="column" style={{ gap: "20px" }}>
             {offers.map((a: Offer) => {
