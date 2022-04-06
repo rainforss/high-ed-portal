@@ -1,9 +1,9 @@
 import { ClientCredentialRequest } from "@azure/msal-node";
 import { NextApiRequest, NextApiResponse } from "next";
-import { dynamicsOffer } from "../../../../../services/dynamicsOffer";
-import { instantiateCca } from "../../../../../utils/cca";
-import { connect, disconnect } from "../../../../../utils/redis";
-import { withSessionRoute } from "../../../../../utils/withSession";
+import { dynamicsOffer } from "../../../services/dynamicsOffer";
+import { instantiateCca } from "../../../utils/cca";
+import { connect, disconnect } from "../../../utils/redis";
+import { withSessionRoute } from "../../../utils/withSession";
 
 async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -34,14 +34,23 @@ async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
     const { offerId } = req.query;
 
     switch (req.method) {
-      case "PUT":
+      case "GET":
         const offer = await dynamicsOffer(
+          tokenResponse.accessToken
+        ).getOfferByOfferId(offerId as string);
+
+        await disconnect();
+
+        return res.status(200).json(offer);
+
+      case "PUT":
+        const updatedOffer = await dynamicsOffer(
           tokenResponse.accessToken
         ).updateOfferByOfferId(offerId as string, req.body.offer);
 
         await disconnect();
 
-        return res.status(200).json(offer);
+        return res.status(200).json(updatedOffer);
 
       default:
         const error = new Error(

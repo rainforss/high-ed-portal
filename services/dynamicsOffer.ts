@@ -3,6 +3,7 @@ import {
   WebApiConfig,
   updateWithReturnData,
   Entity,
+  retrieve,
 } from "dataverse-webapi/lib/node";
 
 export const dynamicsOffer = (accessToken: string) => {
@@ -17,6 +18,17 @@ export const dynamicsOffer = (accessToken: string) => {
       );
 
       return offers.value;
+    },
+    getOfferByOfferId: async (offerId: string) => {
+      const offer = await retrieve(
+        config,
+        "bsi_offers",
+        offerId,
+        "$select=bsi_name,bsi_expirationdate,bsi_offerstatus&$expand=bsi_Program($select=mshied_name),bsi_StudentApplication($select=bsi_name),bsi_PrerequisiteProgram($select=mshied_name),bsi_AcademicPeriod($select=mshied_name)",
+        { representation: true }
+      );
+
+      return offer;
     },
     updateOfferByOfferId: async (offerId: string, offerData: Entity) => {
       const offer = await updateWithReturnData(

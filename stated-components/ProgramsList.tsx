@@ -54,7 +54,7 @@ const ProgramsList: React.FunctionComponent<IProgramsListProps> = (props) => {
           </Flex>
         )}
         {!isLoading && (
-          <Table variant="striped" colorScheme="linkedin">
+          <Table variant="striped" colorScheme="red">
             <Thead
               position="sticky"
               top="0"
