@@ -25,8 +25,8 @@ const OfferCard: React.FunctionComponent<IOfferCardProps> = ({ offer }) => {
           color="black"
         >
           <Text as="h4">
-            {offer.bsi_ProgramHistoryCondition
-              ? offer.bsi_ProgramHistoryCondition.bsi_name
+            {offer.bsi_PrerequisiteProgram
+              ? offer.bsi_PrerequisiteProgram.bsi_name
               : "N/A"}
           </Text>
         </Tooltip>

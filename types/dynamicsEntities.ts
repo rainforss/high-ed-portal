@@ -95,7 +95,7 @@ export interface Offer {
     mshied_programid: string;
   };
   bsi_PrerequisiteProgram: {
-    bsi_name: string;
+    mshied_name: string;
     mshied_programid: string;
   };
   bsi_AcademicPeriod: AcademicPeriod;
