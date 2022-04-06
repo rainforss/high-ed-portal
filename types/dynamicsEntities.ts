@@ -34,6 +34,8 @@ export interface Program extends Entity {
   bsi_interviewrequired: boolean | null;
   bsi_applicationfee: number;
   bsi_commitmentfee: number;
+  bsi_iscontinuingeducation: boolean;
+  bsi_islanguageprogram: boolean;
   mshied_ProgramRequirement_Programid_mshie: Array<{
     mshied_name: string;
     mshied_programrequirementid: string;
@@ -53,6 +55,10 @@ export interface Application extends Entity {
     mshied_name: string;
     mshied_programid: string;
   };
+  bsi_DestinedProgram: {
+    mshied_name: string;
+    mshied_programid: string;
+  };
   bsi_AcademicPeriod: AcademicPeriod;
   bsi_ProgramLevel: ProgramLevel;
   bsi_PrerequisiteProgram: {
@@ -67,6 +73,7 @@ export class ApplicationDTO implements Entity {
   "bsi_Applicant@odata.bind": string = "";
   "bsi_AcademicPeriod@odata.bind": string = "";
   "bsi_Program@odata.bind": string = "";
+  "bsi_DestinedProgram@odata.bind": string = "";
   "bsi_applicationstatus": number = 494280000;
 }
 
@@ -87,7 +94,7 @@ export interface Offer {
     mshied_name: string;
     mshied_programid: string;
   };
-  bsi_ProgramHistoryCondition: {
+  bsi_PrerequisiteProgram: {
     bsi_name: string;
     mshied_programid: string;
   };

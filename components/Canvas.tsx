@@ -7,10 +7,10 @@ const Canvas: React.FunctionComponent<ICanvasProps> = (props) => {
   return (
     <Box
       position="fixed"
-      w="calc(100% - 350px)"
+      w="calc(100% - 300px)"
       h="calc(100vh - 80px)"
       top="80px"
-      left="350px"
+      left="300px"
       overflow="hidden"
       p={8}
     >

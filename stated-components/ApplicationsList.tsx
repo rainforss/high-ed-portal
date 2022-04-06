@@ -55,11 +55,11 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
             <Table variant="striped" colorScheme="linkedin">
               <Thead>
                 <Tr>
-                  <Th>Program</Th>
-                  <Th>Prerequisite Program</Th>
+                  <Th>Applied Program</Th>
+                  <Th>Destined Program</Th>
                   <Th>Academic Period</Th>
-                  <Th>Application Fee Paid</Th>
-                  <Th>Commitment Fee Paid</Th>
+                  <Th>Application Fee</Th>
+                  <Th>Commitment Fee</Th>
                   <Th>Application Status</Th>
                 </Tr>
               </Thead>
@@ -85,8 +85,8 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                         {a.bsi_Program.mshied_name}
                       </Td>
                       <Td>
-                        {a.bsi_PrerequisiteProgram
-                          ? a.bsi_PrerequisiteProgram.mshied_name
+                        {a.bsi_DestinedProgram
+                          ? a.bsi_DestinedProgram.mshied_name
                           : "None"}
                       </Td>
                       <Td>{a.bsi_AcademicPeriod.mshied_name}</Td>

@@ -72,6 +72,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
               <Tr>
                 <Th>Application</Th>
                 <Th>Program</Th>
+                <Th>Prerequisite Program</Th>
                 <Th>Offer Status</Th>
                 <Th>Expiration Date</Th>
               </Tr>
@@ -102,8 +103,8 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                           isLoading={updating}
                           disabled={
                             updating ||
-                            a.bsi_offerstatus !== 861560000 ||
-                            !!a.bsi_ProgramHistoryCondition
+                            (a.bsi_offerstatus !== 861560000 &&
+                              a.bsi_offerstatus !== 861560004)
                           }
                         />
                       </Tooltip>{" "}
@@ -120,12 +121,17 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                             setUpdating(false);
                           }}
                           isLoading={updating}
-                          disabled={updating || a.bsi_offerstatus !== 861560000}
+                          disabled={
+                            updating ||
+                            (a.bsi_offerstatus !== 861560000 &&
+                              a.bsi_offerstatus !== 861560004)
+                          }
                         />
                       </Tooltip>{" "}
                       {a.bsi_StudentApplication.bsi_name}
                     </Td>
                     <Td>{a.bsi_Program.mshied_name}</Td>
+                    <Td>{a.bsi_PrerequisiteProgram.mshied_name}</Td>
                     <Td>
                       {
                         a[

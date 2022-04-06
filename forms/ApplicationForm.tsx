@@ -25,6 +25,7 @@ import { useApplications } from "../hooks/useApplications";
 import { useProgramLevels } from "../hooks/useProgramLevels";
 import { usePrograms } from "../hooks/usePrograms";
 import DocumentsDrawer from "../stated-components/DocumentsDrawer";
+import { Program } from "../types/dynamicsEntities";
 
 interface IApplicationFormProps {
   applicationId?: string;
@@ -34,6 +35,7 @@ interface IApplicationFormProps {
 type ApplicationValues = {
   name: string;
   programId: string;
+  destinedProgramId: string;
   programLevelId: string;
   academicPeriodId: string;
   applicantId: string;
@@ -57,7 +59,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
     programs,
     isError: isProgramsError,
     isLoading: isProgramsLoading,
-  } = usePrograms(true);
+  } = usePrograms(false);
   const {
     programLevels,
     isError: isProgramLevelsError,
@@ -101,6 +103,9 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
               ? {
                   name: applications.bsi_name,
                   programId: applications.bsi_Program.mshied_programid,
+                  destinedProgramId: applications.bsi_DestinedProgram
+                    ? applications.bsi_DestinedProgram.mshied_programid
+                    : "",
                   programLevelId: applications.bsi_ProgramLevel
                     ? applications.bsi_ProgramLevel.mshied_programlevelid
                     : "",
@@ -112,6 +117,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
               : {
                   name: "",
                   programId: "",
+                  destinedProgramId: "",
                   programLevelId: "",
                   academicPeriodId: "",
                   applicantId: applicantId,
@@ -195,10 +201,25 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
 
                 {!isProgramsLoading && (
                   <SelectInput
-                    options={programs}
+                    options={programs.filter(
+                      (p: Program) =>
+                        p.bsi_iscontinuingeducation || p.bsi_islanguageprogram
+                    )}
                     id="programId"
                     name="programId"
                     label="Program"
+                    disabled={!!applicationId}
+                    w="100%"
+                    p="1rem"
+                  />
+                )}
+
+                {!isProgramsLoading && (
+                  <SelectInput
+                    options={programs}
+                    id="destinedProgramId"
+                    name="destinedProgramId"
+                    label="Destined Program"
                     disabled={!!applicationId}
                     w="100%"
                     p="1rem"

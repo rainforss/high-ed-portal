@@ -29,7 +29,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
       px={4}
       py={12}
       h="100%"
-      w="350px"
+      w="300px"
       bg="white"
       flexDirection="column"
       align="center"
@@ -46,7 +46,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
           alt="Betach Institute Logo"
           loading="eager"
         />
-        <Text as="span" fontWeight="bold" fontSize="1.5rem">
+        <Text as="span" fontWeight="bold" fontSize="1.2rem">
           Betach Institute
         </Text>
       </Flex>
