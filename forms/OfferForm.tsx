@@ -149,6 +149,16 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
                   <Text as="strong">{offers.bsi_Program.mshied_name}</Text>
                 </Alert>
               </Flex>
+              {!offers.bsi_StudentApplication.bsi_commitmentfeepaid && (
+                <Flex>
+                  <Alert status="warning">
+                    <AlertIcon />
+                    You must pay the commitment fee to be able to accept the
+                    offer.
+                    <Text as="strong">{offers.bsi_Program.mshied_name}</Text>
+                  </Alert>
+                </Flex>
+              )}
             </VStack>
           </Flex>
           {(offers.bsi_offerstatus === 861560000 ||
