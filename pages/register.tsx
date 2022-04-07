@@ -19,7 +19,7 @@ export interface RegistrationValues {
   firstName: string;
   lastName: string;
   email: string;
-  epbcId: string;
+  studentId: string;
   password: string;
   confirmPassword: string;
   username: string;
@@ -61,7 +61,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
             firstName: "",
             lastName: "",
             email: "",
-            epbcId: "",
+            studentId: "",
             password: "",
             confirmPassword: "",
             username: "",
@@ -124,10 +124,10 @@ const Register: NextPage<IRegisterProps> = (props) => {
                   p="1rem"
                 />
                 <TextInput
-                  name="epbcId"
-                  id="epbcId"
+                  name="studentId"
+                  id="studentId"
                   type="text"
-                  label="EPBC ID"
+                  label="York University Student ID"
                   w="50%"
                   p="1rem"
                 />

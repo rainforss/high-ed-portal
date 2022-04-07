@@ -24,7 +24,7 @@ export const dynamicsOffer = (accessToken: string) => {
         config,
         "bsi_offers",
         offerId,
-        "$select=bsi_name,bsi_expirationdate,bsi_offerstatus&$expand=bsi_Program($select=mshied_name),bsi_StudentApplication($select=bsi_name),bsi_PrerequisiteProgram($select=mshied_name),bsi_AcademicPeriod($select=mshied_name)",
+        "$select=bsi_name,bsi_expirationdate,bsi_offerstatus&$expand=bsi_Program($select=mshied_name),bsi_StudentApplication($select=bsi_name,bsi_commitmentfeepaid),bsi_PrerequisiteProgram($select=mshied_name),bsi_AcademicPeriod($select=mshied_name)",
         { representation: true }
       );
 

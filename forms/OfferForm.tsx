@@ -31,6 +31,16 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
   const toast = useToast();
   const [submitting, setSubmitting] = React.useState(false);
   const handleAccept = async () => {
+    if (!offers.bsi_StudentApplication.bsi_commitmentfeepaid) {
+      return toast({
+        title: "Commitment Fee Unpaid",
+        description:
+          "You cannot accept this offer since the commitment fee has not been paid in full. Please pay the commitment fee before proceeding.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
     setSubmitting(true);
     await axios.put(`/api/offers/${offerId}`, {
       offer: { bsi_offerstatus: 861560001 },

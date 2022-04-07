@@ -160,12 +160,13 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                 status: "success",
                 isClosable: true,
                 duration: 5000,
-                onCloseComplete: () =>
+                onCloseComplete: () => {
+                  actions.setSubmitting(false);
                   router.push(
                     `/applications/${createdApplication.data.bsi_studentapplicationid}`
-                  ),
+                  );
+                },
               });
-              actions.setSubmitting(false);
             } catch (error: any) {
               actions.setSubmitting(false);
               toast({

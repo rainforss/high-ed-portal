@@ -105,6 +105,10 @@ export interface Offer {
     mshied_name: string;
     mshied_programid: string;
   };
+  bsi_StudentApplication: {
+    bsi_name: string;
+    bsi_commitmentfeepaid?: boolean;
+  };
   bsi_AcademicPeriod: AcademicPeriod;
   bsi_expirationdate: string;
   bsi_offerstatus: number;

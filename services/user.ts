@@ -21,7 +21,6 @@ export const login = async (info: LoginValues) => {
     });
     return result;
   } catch (error: any) {
-    console.log(error);
     throw error.response.data;
   }
 };

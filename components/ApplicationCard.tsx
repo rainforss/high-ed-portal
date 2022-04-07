@@ -34,15 +34,10 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
             ]
           }
         </Badge>
-        <Tooltip
-          hasArrow
-          label="Prerequisite Program"
-          bg="gray.300"
-          color="black"
-        >
+        <Tooltip hasArrow label="Destined Program" bg="gray.300" color="black">
           <Text as="h4">
-            {application.bsi_PrerequisiteProgram
-              ? application.bsi_PrerequisiteProgram.mshied_name
+            {application.bsi_DestinedProgram
+              ? application.bsi_DestinedProgram.mshied_name
               : "N/A"}
           </Text>
         </Tooltip>
@@ -73,7 +68,7 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
           </Badge>
           <Badge
             bgColor="white"
-            color={application.bsi_applicationfeepaid ? "green" : "red.500"}
+            color={application.bsi_commitmentfeepaid ? "green" : "red.500"}
             colorScheme={application.bsi_commitmentfeepaid ? "green" : "red"}
           >
             Commitment Fee{" "}

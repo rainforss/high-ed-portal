@@ -33,6 +33,8 @@ const ToggleInput: React.FunctionComponent<IToggleInputProps> = ({
         id={id}
         name={name}
         value={field.value}
+        isChecked={field.value}
+        disabled={disabled}
         onChange={(e) => {
           console.log(e.target.value);
           _helpers.setValue(e.target.value === "true" ? false : true);
