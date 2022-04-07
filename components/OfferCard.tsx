@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Text, Tooltip } from "@chakra-ui/react";
+import { Badge, Box, Flex, Link, Text, Tooltip } from "@chakra-ui/react";
 import * as React from "react";
 import { Offer } from "../types/dynamicsEntities";
 
@@ -32,14 +32,16 @@ const OfferCard: React.FunctionComponent<IOfferCardProps> = ({ offer }) => {
         </Tooltip>
       </Flex>
       <Flex p={4} align="center" style={{ gap: "1.2rem" }}>
-        <Text
-          as="h2"
-          fontWeight="bold"
-          fontSize="1.2rem"
-          textTransform="uppercase"
-        >
-          {offer.bsi_Program.mshied_name}
-        </Text>
+        <Link href={`/offers/${offer.bsi_offerid}`}>
+          <Text
+            as="h2"
+            fontWeight="bold"
+            fontSize="1.2rem"
+            textTransform="uppercase"
+          >
+            {offer.bsi_Program.mshied_name}
+          </Text>
+        </Link>
         <Text as="small">{offer.bsi_AcademicPeriod.mshied_name}</Text>
       </Flex>
     </Box>
