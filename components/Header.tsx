@@ -44,13 +44,15 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
       style={{ gap: "20px" }}
       zIndex={10}
     >
-      <Popover>
-        <PopoverTrigger>
-          <IconButton
-            aria-label="Bright-Mode"
-            icon={<BellIcon color="#f58d42" />}
-          />
-        </PopoverTrigger>
+      {/* <Popover>
+        <PopoverTrigger> */}
+      <IconButton
+        aria-label="Notifications"
+        icon={<BellIcon color="#f58d42" />}
+        as="a"
+        href="/notifications"
+      />
+      {/* </PopoverTrigger>
         <Portal>
           <PopoverContent zIndex={80} bgColor="white">
             <PopoverArrow />
@@ -62,7 +64,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
             <PopoverFooter>This is the footer</PopoverFooter>
           </PopoverContent>
         </Portal>
-      </Popover>
+      </Popover> */}
       <Box position="relative">
         {props.username && !props.userLoading && (
           <Button
