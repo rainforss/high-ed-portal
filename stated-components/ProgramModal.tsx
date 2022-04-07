@@ -88,6 +88,29 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
               </Box>
               <Box>
                 <Text fontWeight="bold" mb={4}>
+                  Document Requirements
+                </Text>
+                {program.bsi_SupportingDocument_mshied_program_msh.length ===
+                0 ? (
+                  <Text>None</Text>
+                ) : (
+                  <List spacing={2}>
+                    {program.bsi_SupportingDocument_mshied_program_msh.map(
+                      (pr) => (
+                        <ListItem key={pr.bsi_supportingdocumentid}>
+                          <ListIcon
+                            as={pr.bsi_isrequired ? LockIcon : UnlockIcon}
+                            color={pr.bsi_isrequired ? "red" : "green"}
+                          />{" "}
+                          {pr.bsi_name}
+                        </ListItem>
+                      )
+                    )}
+                  </List>
+                )}
+              </Box>
+              <Box>
+                <Text fontWeight="bold" mb={4}>
                   Fees and Payment
                 </Text>
                 <Flex>

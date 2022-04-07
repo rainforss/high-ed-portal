@@ -82,12 +82,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
               {offers.length > 0 &&
                 offers.map((a: any) => (
                   <Tr key={a.bsi_offerid}>
-                    <Td
-                      display="flex"
-                      justifyContent="start"
-                      alignItems="center"
-                      style={{ gap: "1rem" }}
-                    >
+                    <Td>
                       <IconButton
                         aria-label="Details"
                         as="a"
@@ -95,6 +90,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                         bgColor="white"
                         color="red"
                         fontSize="2xl"
+                        mr={4}
                         href={`/offers/${a.bsi_offerid}`}
                       />{" "}
                       {a.bsi_StudentApplication.bsi_name}

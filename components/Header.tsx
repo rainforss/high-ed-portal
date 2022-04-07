@@ -22,6 +22,8 @@ import Dropdown from "./Dropdown";
 
 interface IHeaderProps {
   username?: string;
+  firstName?: string;
+  lastName?: string;
   userLoading?: boolean;
 }
 
@@ -79,7 +81,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                 src="https://bit.ly/dan-abramov"
               />
             )}
-            <Text ml={4}>{props.username}</Text>
+            <Text ml={4}>{props.firstName + " " + props.lastName}</Text>
           </Button>
         )}
         {!props.username && !props.userLoading && (

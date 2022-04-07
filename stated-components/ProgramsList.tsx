@@ -1,7 +1,6 @@
 import {
   TableContainer,
   Table,
-  TableCaption,
   Thead,
   Tr,
   Th,
@@ -11,15 +10,13 @@ import {
   Icon,
   useDisclosure,
   Skeleton,
-  Spinner,
-  Center,
   Flex,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FcViewDetails } from "react-icons/fc";
 import { usePrograms } from "../hooks/usePrograms";
 import { Program } from "../types/dynamicsEntities";
-import ApplicationModal from "./ApplicationModal";
+
 import ProgramModal from "./ProgramModal";
 
 interface IProgramsListProps {}
@@ -73,17 +70,13 @@ const ProgramsList: React.FunctionComponent<IProgramsListProps> = (props) => {
               {programs.length > 0 &&
                 programs.map((a: any) => (
                   <Tr key={a.mshied_programid}>
-                    <Td
-                      display="flex"
-                      justifyContent="start"
-                      alignItems="center"
-                      style={{ gap: "1rem" }}
-                    >
+                    <Td>
                       <IconButton
                         aria-label="Details"
                         icon={<Icon as={FcViewDetails} />}
                         bgColor="white"
                         fontSize="2xl"
+                        mr={4}
                         onClick={() => {
                           setSelectedProgram(a);
                           onOpen();

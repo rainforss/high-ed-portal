@@ -12,8 +12,10 @@ import {
   StatLabel,
   StatNumber,
   Text,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import * as React from "react";
 import { useOffers } from "../hooks/useOffers";
 
@@ -22,7 +24,45 @@ interface IOfferFormProps {
 }
 
 const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
-  const { offers, isError, isLoading } = useOffers(undefined, offerId);
+  const { offers, isError, isLoading, mutateOffers } = useOffers(
+    undefined,
+    offerId
+  );
+  const toast = useToast();
+  const [submitting, setSubmitting] = React.useState(false);
+  const handleAccept = async () => {
+    setSubmitting(true);
+    await axios.put(`/api/offers/${offerId}`, {
+      offer: { bsi_offerstatus: 861560001 },
+    });
+    await mutateOffers();
+
+    toast({
+      title: "Accepted Offer",
+      description: "Successfully accepted the offer. Congratulations!",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+    setSubmitting(false);
+  };
+
+  const handleReject = async () => {
+    setSubmitting(true);
+    await axios.put(`/api/offers/${offerId}`, {
+      offer: { bsi_offerstatus: 861560002 },
+    });
+    await mutateOffers();
+
+    toast({
+      title: "Rejected Offer",
+      description: "Successfully rejected the offer. Good luck!",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+    setSubmitting(false);
+  };
   return (
     <Box
       boxShadow="#e92731 0px 5px 15px"
@@ -100,15 +140,38 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
               </Flex>
             </VStack>
           </Flex>
-          <Flex position="absolute" bottom="4rem" left="2rem">
-            <ButtonGroup spacing="6">
-              <Button bg="#e92731" color="white">
-                Accept
-              </Button>
-              <Button>Reject</Button>
-            </ButtonGroup>
-          </Flex>
-          <Button position="absolute" bottom="4rem" right="2rem" px={8}>
+          {(offers.bsi_offerstatus === 861560000 ||
+            offers.bsi_offerstatus === 861560004) && (
+            <Flex position="absolute" bottom="4rem" left="2rem">
+              <ButtonGroup spacing="6">
+                <Button
+                  bg="#e92731"
+                  color="white"
+                  disabled={submitting}
+                  isLoading={submitting}
+                  onClick={handleAccept}
+                >
+                  Accept
+                </Button>
+                <Button
+                  disabled={submitting}
+                  isLoading={submitting}
+                  onClick={handleReject}
+                >
+                  Reject
+                </Button>
+              </ButtonGroup>
+            </Flex>
+          )}
+          <Button
+            position="absolute"
+            bottom="4rem"
+            right="2rem"
+            px={8}
+            as="a"
+            href="/offers"
+            disabled={submitting}
+          >
             Exit
           </Button>
         </>

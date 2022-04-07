@@ -15,7 +15,7 @@ const OfferCard: React.FunctionComponent<IOfferCardProps> = ({ offer }) => {
       borderRadius="15px"
     >
       <Flex p={4} align="center" justifyContent="space-between">
-        <Badge fontSize="1rem" variant="ghost">
+        <Badge fontSize="0.8rem" variant="ghost">
           {offer["bsi_offerstatus@OData.Community.Display.V1.FormattedValue"]}
         </Badge>
         <Tooltip

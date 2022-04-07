@@ -41,6 +41,13 @@ export interface Program extends Entity {
     mshied_programrequirementid: string;
     mshied_isrequired: boolean | null;
   }>;
+  bsi_SupportingDocument_mshied_program_msh: Array<{
+    bsi_name: string;
+    "bsi_filetype@OData.Community.Display.V1.FormattedValue": string;
+    bsi_requiredfilenameprefix: string;
+    bsi_supportingdocumentid: string;
+    bsi_isrequired: boolean;
+  }>;
 }
 
 export interface Application extends Entity {
@@ -102,4 +109,56 @@ export interface Offer {
   bsi_expirationdate: string;
   bsi_offerstatus: number;
   "bsi_offerstatus@OData.Community.Display.V1.FormattedValue": string;
+}
+
+export interface Appointment {
+  subject: string;
+  activityid: string;
+  location: string;
+  scheduledstart: Date;
+  scheduledend: Date;
+  description: string;
+  "prioritycode@OData.Community.Display.V1.FormattedValue": string;
+  prioritycode: number;
+}
+
+export interface CourseHistory {
+  mshied_name: string;
+  mshied_coursehistoryid: string;
+  mshied_creditsattempted: number;
+  mshied_CourseId: {
+    mshied_courseid: string;
+    mshied_name: string;
+  };
+  mshied_CourseSectionId: {
+    mshied_coursesectionid: string;
+    bsi_coursenumber: string;
+  };
+  mshied_AcademicPeriodDetailsId: AcademicPeriod;
+  mshied_RegistrationStatusId: {
+    mshied_registrationstatusid: string;
+    mshied_name: string;
+  };
+}
+
+export interface ProgramHistory {
+  bsi_programhistoryid: string;
+  bsi_programhistorystatus: number;
+  "bsi_programhistorystatus@OData.Community.Display.V1.FormattedValue": string;
+  bsi_gpa: number;
+  bsi_Program: {
+    mshied_name: string;
+    mshied_programid: string;
+  };
+  bsi_StartAcademicPeriod: AcademicPeriod;
+}
+
+export interface Task {
+  activityid: string;
+  subject: string;
+  scheduledstart: Date;
+  scheduledend: Date;
+  description: string;
+  "prioritycode@OData.Community.Display.V1.FormattedValue": string;
+  prioritycode: number;
 }

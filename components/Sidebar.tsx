@@ -2,7 +2,13 @@ import { Box, Flex, Icon, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { NavigationItem } from "../types/components";
 import { ImFileZip } from "react-icons/im";
-import { MdDashboard, MdLocalOffer } from "react-icons/md";
+import { SiHtmlacademy, SiMicrosoftacademic } from "react-icons/si";
+import {
+  MdDashboard,
+  MdEditCalendar,
+  MdLocalOffer,
+  MdNotifications,
+} from "react-icons/md";
 import { IoIosSchool } from "react-icons/io";
 import NavItem from "./NavItem";
 import Image from "next/image";
@@ -13,9 +19,17 @@ interface ISidebarProps {}
 const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   const navItems: NavigationItem[] = [
     { label: "Dashboard", url: "", icon: MdDashboard },
-    { label: "Programs", url: "programs", icon: IoIosSchool },
+    { label: "Programs", url: "programs", icon: SiHtmlacademy },
     { label: "My Applications", url: "applications", icon: ImFileZip },
     { label: "My Offers", url: "offers", icon: MdLocalOffer },
+    { label: "My Programs", url: "my-programs", icon: IoIosSchool },
+    { label: "My Courses", url: "my-courses", icon: SiMicrosoftacademic },
+    {
+      label: "My Appointments",
+      url: "appointments",
+      icon: MdEditCalendar,
+    },
+    { label: "My Notifications", url: "notifications", icon: MdNotifications },
   ];
 
   const router = useRouter();

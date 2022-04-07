@@ -1,32 +1,33 @@
 import {
   TableContainer,
+  Flex,
+  Skeleton,
   Table,
   Thead,
   Tr,
   Th,
   Tbody,
   Td,
-  Icon,
   IconButton,
-  Skeleton,
-  Flex,
-  Button,
+  Icon,
   Center,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
-import { FcViewDetails } from "react-icons/fc";
 import * as React from "react";
-import { useApplications } from "../hooks/useApplications";
-import { PlusSquareIcon } from "@chakra-ui/icons";
+import { FcViewDetails } from "react-icons/fc";
+import { useProgramHistories } from "../hooks/useProgramHistories";
 
-interface IApplicationsListProps {
+interface IProgramHistoriesListProps {
   contactId: string;
 }
 
-const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
-  props
-) => {
-  const { applications, isError, isLoading } = useApplications(props.contactId);
-
+const ProgramHistoriesList: React.FunctionComponent<
+  IProgramHistoriesListProps
+> = (props) => {
+  const { programHistories, isError, isLoading } = useProgramHistories(
+    props.contactId
+  );
   return (
     <>
       <TableContainer
@@ -55,19 +56,17 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
             <Table variant="striped" colorScheme="red">
               <Thead>
                 <Tr>
-                  <Th>Applied Program</Th>
-                  <Th>Destined Program</Th>
-                  <Th>Academic Period</Th>
-                  <Th>Application Fee</Th>
-                  <Th>Commitment Fee</Th>
-                  <Th>Application Status</Th>
+                  <Th>Program</Th>
+                  <Th>Start Academic Period</Th>
+                  <Th>GPA</Th>
+                  <Th>Status</Th>
                 </Tr>
               </Thead>
 
               <Tbody>
-                {applications.length > 0 &&
-                  applications.map((a: any) => (
-                    <Tr key={a.bsi_studentapplicationid}>
+                {programHistories.length > 0 &&
+                  programHistories.map((a) => (
+                    <Tr key={a.bsi_programhistoryid}>
                       <Td>
                         <IconButton
                           aria-label="Details"
@@ -76,22 +75,16 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                           bgColor="white"
                           fontSize="2xl"
                           mr={4}
-                          href={`/applications/${a.bsi_studentapplicationid}`}
+                          href={`/programHistories/${a.bsi_programhistoryid}`}
                         />{" "}
                         {a.bsi_Program.mshied_name}
                       </Td>
-                      <Td>
-                        {a.bsi_DestinedProgram
-                          ? a.bsi_DestinedProgram.mshied_name
-                          : "None"}
-                      </Td>
-                      <Td>{a.bsi_AcademicPeriod.mshied_name}</Td>
-                      <Td>{a.bsi_applicationfeepaid ? "Yes" : "No"}</Td>
-                      <Td>{a.bsi_commitmentfeepaid ? "Yes" : "No"}</Td>
+                      <Td>{a.bsi_StartAcademicPeriod?.mshied_name}</Td>
+                      <Td>{a.bsi_gpa}</Td>
                       <Td>
                         {
                           a[
-                            "bsi_applicationstatus@OData.Community.Display.V1.FormattedValue"
+                            "bsi_programhistorystatus@OData.Community.Display.V1.FormattedValue"
                           ]
                         }
                       </Td>
@@ -99,18 +92,14 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                   ))}
               </Tbody>
             </Table>
-            <Center mt={16}>
-              <Button
-                as="a"
-                href="/applications/new"
-                bgColor="#e92731"
-                color="white"
-                px={6}
-                leftIcon={<PlusSquareIcon />}
-              >
-                NEW APPLICATION
-              </Button>
-            </Center>
+            {programHistories && programHistories.length === 0 && (
+              <Center mt={16} px={8}>
+                <Alert status="info">
+                  <AlertIcon />
+                  You have no program histories at this moment.
+                </Alert>
+              </Center>
+            )}
           </>
         )}
       </TableContainer>
@@ -118,4 +107,4 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
   );
 };
 
-export default ApplicationsList;
+export default ProgramHistoriesList;

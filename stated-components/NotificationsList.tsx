@@ -1,32 +1,31 @@
 import {
   TableContainer,
+  Flex,
+  Skeleton,
   Table,
   Thead,
   Tr,
   Th,
   Tbody,
   Td,
-  Icon,
   IconButton,
-  Skeleton,
-  Flex,
-  Button,
+  Icon,
   Center,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
-import { FcViewDetails } from "react-icons/fc";
 import * as React from "react";
-import { useApplications } from "../hooks/useApplications";
-import { PlusSquareIcon } from "@chakra-ui/icons";
+import { FcViewDetails } from "react-icons/fc";
+import { useTasks } from "../hooks/useTasks";
 
-interface IApplicationsListProps {
+interface INotificationsListProps {
   contactId: string;
 }
 
-const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
+const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
   props
 ) => {
-  const { applications, isError, isLoading } = useApplications(props.contactId);
-
+  const { tasks, isError, isLoading } = useTasks(props.contactId);
   return (
     <>
       <TableContainer
@@ -55,19 +54,17 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
             <Table variant="striped" colorScheme="red">
               <Thead>
                 <Tr>
-                  <Th>Applied Program</Th>
-                  <Th>Destined Program</Th>
-                  <Th>Academic Period</Th>
-                  <Th>Application Fee</Th>
-                  <Th>Commitment Fee</Th>
-                  <Th>Application Status</Th>
+                  <Th>Subject</Th>
+                  <Th>Importance</Th>
+                  <Th>Description</Th>
+                  <Th>Due Date</Th>
                 </Tr>
               </Thead>
 
               <Tbody>
-                {applications.length > 0 &&
-                  applications.map((a: any) => (
-                    <Tr key={a.bsi_studentapplicationid}>
+                {tasks.length > 0 &&
+                  tasks.map((a) => (
+                    <Tr key={a.activityid}>
                       <Td>
                         <IconButton
                           aria-label="Details"
@@ -76,41 +73,31 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                           bgColor="white"
                           fontSize="2xl"
                           mr={4}
-                          href={`/applications/${a.bsi_studentapplicationid}`}
+                          href={`/tasks/${a.activityid}`}
                         />{" "}
-                        {a.bsi_Program.mshied_name}
+                        {a.subject}
                       </Td>
-                      <Td>
-                        {a.bsi_DestinedProgram
-                          ? a.bsi_DestinedProgram.mshied_name
-                          : "None"}
-                      </Td>
-                      <Td>{a.bsi_AcademicPeriod.mshied_name}</Td>
-                      <Td>{a.bsi_applicationfeepaid ? "Yes" : "No"}</Td>
-                      <Td>{a.bsi_commitmentfeepaid ? "Yes" : "No"}</Td>
                       <Td>
                         {
                           a[
-                            "bsi_applicationstatus@OData.Community.Display.V1.FormattedValue"
+                            "prioritycode@OData.Community.Display.V1.FormattedValue"
                           ]
                         }
                       </Td>
+                      <Td>{a.description}</Td>
+                      <Td>{new Date(a.scheduledend).toLocaleString()}</Td>
                     </Tr>
                   ))}
               </Tbody>
             </Table>
-            <Center mt={16}>
-              <Button
-                as="a"
-                href="/applications/new"
-                bgColor="#e92731"
-                color="white"
-                px={6}
-                leftIcon={<PlusSquareIcon />}
-              >
-                NEW APPLICATION
-              </Button>
-            </Center>
+            {tasks && tasks.length === 0 && (
+              <Center mt={16} px={8}>
+                <Alert status="info">
+                  <AlertIcon />
+                  You have no notifications at this moment.
+                </Alert>
+              </Center>
+            )}
           </>
         )}
       </TableContainer>
@@ -118,4 +105,4 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
   );
 };
 
-export default ApplicationsList;
+export default NotificationsList;

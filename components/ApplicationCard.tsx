@@ -27,7 +27,7 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
       borderRadius="15px"
     >
       <Flex p={4} align="center" justifyContent="space-between">
-        <Badge fontSize="1rem" variant="ghost">
+        <Badge fontSize="0.8rem" variant="ghost">
           {
             application[
               "bsi_applicationstatus@OData.Community.Display.V1.FormattedValue"
@@ -47,7 +47,7 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
           </Text>
         </Tooltip>
       </Flex>
-      <Flex p={4} align="center" style={{ gap: "1.2rem" }}>
+      <Flex px={4} align="center" style={{ gap: "1.2rem" }}>
         <Link href={`/applications/${application.bsi_studentapplicationid}`}>
           <Text
             as="h2"
@@ -82,11 +82,11 @@ const ApplicationCard: React.FunctionComponent<IApplicationCardProps> = ({
         </Flex>
         {application.bsi_packagecomplete ? (
           <Tooltip hasArrow label="Package Complete" bg="green" color="white">
-            <CheckCircleIcon color="white" />
+            <CheckCircleIcon color="white" fontSize="1.2rem" />
           </Tooltip>
         ) : (
           <Tooltip hasArrow label="Package Inomplete" bg="red" color="white">
-            <WarningIcon color="white" />
+            <WarningIcon color="white" fontSize="1.2rem" />
           </Tooltip>
         )}
       </Flex>

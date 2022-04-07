@@ -35,11 +35,12 @@ const Login: NextPage<ILoginProps> = () => {
           onSubmit={async (values, actions) => {
             try {
               const result = await login(values);
-              console.log(result);
               actions.setSubmitting(false);
               toast({
                 title: "Successfully Logged In.",
-                description: `Welcome back ${result.data.fullname}. Now redirecting you to home page.`,
+                description: `Welcome back ${
+                  result.data.firstName + " " + result.data.lastName
+                }. Now redirecting you to home page.`,
                 status: "success",
                 duration: 3000,
                 isClosable: true,
