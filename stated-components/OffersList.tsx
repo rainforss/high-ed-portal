@@ -98,6 +98,8 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                         bgColor="white"
                         color="#767676"
                         fontSize="2xl"
+                        _hover={{ color: "#e31837" }}
+                        transition="ease-in-out 0.5s"
                         mr={4}
                         href={`/offers/${a.bsi_offerid}`}
                       />{" "}

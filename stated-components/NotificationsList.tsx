@@ -80,6 +80,8 @@ const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
                           icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
                           color="#767676"
+                          _hover={{ color: "#e31837" }}
+                          transition="ease-in-out 0.5s"
                           fontSize="2xl"
                           mr={4}
                           href={`/tasks/${a.activityid}`}
