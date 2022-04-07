@@ -50,6 +50,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
 }) => {
   const toast = useToast();
   const router = useRouter();
+  const { programId } = router.query;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const memoizedOnClose = React.useCallback(() => onClose(), []);
   const {
@@ -122,7 +123,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                 }
               : {
                   name: "",
-                  programId: "",
+                  programId: programId as string,
                   destinedProgramId: "",
                   programLevelId: "",
                   academicPeriodId: "",

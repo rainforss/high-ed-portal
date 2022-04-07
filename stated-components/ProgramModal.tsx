@@ -152,7 +152,7 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
               color="white"
               mr={3}
               as="a"
-              href="/applications/new"
+              href={`/applications/new?programId=${program.mshied_programid}`}
             >
               Apply
             </Button>
