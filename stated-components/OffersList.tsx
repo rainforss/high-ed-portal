@@ -51,6 +51,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
         overflowY="auto"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
         borderRadius="5px"
+        bg="whiteAlpha.900"
       >
         {isLoading && (
           <Flex flexDir="column" align="stretch" style={{ gap: "2px" }}>
@@ -68,13 +69,19 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
         )}
         {!isLoading && (
           <Table variant="striped" colorScheme="red">
-            <Thead>
+            <Thead
+              position="sticky"
+              top="0"
+              zIndex={3}
+              bg="white"
+              boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+            >
               <Tr>
-                <Th>Application</Th>
-                <Th>Program</Th>
-                <Th>Prerequisite Program</Th>
-                <Th>Offer Status</Th>
-                <Th>Expiration Date</Th>
+                <Th color="#e31837">Application</Th>
+                <Th color="#e31837">Program</Th>
+                <Th color="#e31837">Prerequisite Program</Th>
+                <Th color="#e31837">Offer Status</Th>
+                <Th color="#e31837">Expiration Date</Th>
               </Tr>
             </Thead>
 

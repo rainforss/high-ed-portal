@@ -34,7 +34,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     <Flex
       w="calc(100% - 300px)"
       h="80px"
-      px={6}
+      px={8}
       borderBottom="1px solid #ebe6e6"
       position="fixed"
       justify="flex-end"
@@ -48,7 +48,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
         <PopoverTrigger> */}
       <IconButton
         aria-label="Notifications"
-        icon={<BellIcon color="#f58d42" />}
+        icon={<BellIcon color="#e31837" />}
         as="a"
         href="/notifications"
       />
@@ -72,6 +72,9 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
             p={4}
             position="relative"
             w="200px"
+            bg="white"
+            color="#e31837"
+            border="#e31837 1px solid"
             isLoading={props.userLoading}
             disabled={props.userLoading}
             onClick={onToggle}

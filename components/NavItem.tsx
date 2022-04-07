@@ -23,7 +23,11 @@ const NavItem: React.FunctionComponent<INavItemProps> = ({
       as="a"
       href={"/" + navItem.url}
     >
-      <Icon as={navItem.icon} fontSize="1.2rem" />
+      <Icon
+        as={navItem.icon}
+        fontSize="1.2rem"
+        color={active ? "whiteAlpha.900" : "#e92731"}
+      />
       <Text as="span" w="70%">
         {navItem.label}
       </Text>

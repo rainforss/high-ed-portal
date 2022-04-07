@@ -34,6 +34,7 @@ const CoursesList: React.FunctionComponent<ICoursesListProps> = (props) => {
         overflowY="auto"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
         borderRadius="5px"
+        bg="whiteAlpha.900"
       >
         {isLoading && (
           <Flex flexDir="column" align="stretch" style={{ gap: "2px" }}>
@@ -52,13 +53,19 @@ const CoursesList: React.FunctionComponent<ICoursesListProps> = (props) => {
         {!isLoading && (
           <>
             <Table variant="striped" colorScheme="red">
-              <Thead>
+              <Thead
+                position="sticky"
+                top="0"
+                zIndex={3}
+                bg="white"
+                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+              >
                 <Tr>
-                  <Th>Course</Th>
-                  <Th>Course Section</Th>
-                  <Th>Academic Period</Th>
-                  <Th>Credits Attempted</Th>
-                  <Th>Status</Th>
+                  <Th color="#e31837">Course</Th>
+                  <Th color="#e31837">Course Section</Th>
+                  <Th color="#e31837">Academic Period</Th>
+                  <Th color="#e31837">Credits Attempted</Th>
+                  <Th color="#e31837">Status</Th>
                 </Tr>
               </Thead>
 

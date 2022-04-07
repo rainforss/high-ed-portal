@@ -1,4 +1,11 @@
-import { Box, Button, Center, Heading, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  Image,
+  useToast,
+} from "@chakra-ui/react";
 import { Formik, FormikProps, Form } from "formik";
 import { useRouter } from "next/router";
 import { NextPage } from "next/types";
@@ -27,10 +34,25 @@ const Register: NextPage<IRegisterProps> = (props) => {
     <Center
       h="100vh"
       w="100%"
-      bg="linear-gradient(to top right, #fc2c77 0%, #6c4079 100%)"
+      bg="linear-gradient(to bottom right, #e31837 0%, #767676 100%)"
     >
-      <Box w="50%" h="80vh" bg="white" borderRadius="10px" p="2rem">
-        <Heading as="h2" p="1rem" py="2rem" fontWeight="normal">
+      <Box
+        w="50%"
+        h="80vh"
+        bg="white"
+        borderRadius="10px"
+        p="2rem"
+        position="relative"
+      >
+        <Image
+          src="/york_scs_logo.jpg"
+          alt="York SCS"
+          position="absolute"
+          w="180px"
+          top="2rem"
+          right="3rem"
+        />
+        <Heading as="h2" p="1rem" py="2rem" fontWeight="normal" color="#e31837">
           Registration Form
         </Heading>
         <Formik
@@ -137,8 +159,8 @@ const Register: NextPage<IRegisterProps> = (props) => {
                   type="submit"
                   mx="auto"
                   my="2rem"
-                  bgColor="#173f5e"
                   color="white"
+                  bg="#e31837"
                   px="2rem"
                   py="1.5rem"
                 >

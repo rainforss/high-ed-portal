@@ -13,6 +13,7 @@ const Canvas: React.FunctionComponent<ICanvasProps> = (props) => {
       left="300px"
       overflow="hidden"
       p={8}
+      bg="linear-gradient(to bottom right, #e31837 0%, #767676 100%)"
     >
       {props.children}
     </Box>

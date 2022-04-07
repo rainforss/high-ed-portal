@@ -36,6 +36,7 @@ const ProgramHistoriesList: React.FunctionComponent<
         overflowY="auto"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
         borderRadius="5px"
+        bg="whiteAlpha.900"
       >
         {isLoading && (
           <Flex flexDir="column" align="stretch" style={{ gap: "2px" }}>
@@ -54,12 +55,18 @@ const ProgramHistoriesList: React.FunctionComponent<
         {!isLoading && (
           <>
             <Table variant="striped" colorScheme="red">
-              <Thead>
+              <Thead
+                position="sticky"
+                top="0"
+                zIndex={3}
+                bg="white"
+                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+              >
                 <Tr>
-                  <Th>Program</Th>
-                  <Th>Start Academic Period</Th>
-                  <Th>GPA</Th>
-                  <Th>Status</Th>
+                  <Th color="#e31837">Program</Th>
+                  <Th color="#e31837">Start Academic Period</Th>
+                  <Th color="#e31837">GPA</Th>
+                  <Th color="#e31837">Status</Th>
                 </Tr>
               </Thead>
 

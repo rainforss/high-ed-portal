@@ -35,6 +35,7 @@ const ProgramsList: React.FunctionComponent<IProgramsListProps> = (props) => {
         overflowY="scroll"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
         borderRadius="5px"
+        bg="whiteAlpha.900"
       >
         {isLoading && (
           <Flex flexDir="column" align="stretch" style={{ gap: "2px" }}>
@@ -57,12 +58,12 @@ const ProgramsList: React.FunctionComponent<IProgramsListProps> = (props) => {
               top="0"
               zIndex={3}
               bg="white"
-              boxShadow="inset 0 2px 0 royalblue, inset 0 -2px 0 royalblue"
+              boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
             >
               <Tr>
-                <Th color="royalblue">Program</Th>
-                <Th color="royalblue">Program Code</Th>
-                <Th color="royalblue">Interview Required</Th>
+                <Th color="#e31837">Program</Th>
+                <Th color="#e31837">Program Code</Th>
+                <Th color="#e31837">Interview Required</Th>
               </Tr>
             </Thead>
 

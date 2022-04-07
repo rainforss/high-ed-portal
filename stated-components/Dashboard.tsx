@@ -146,6 +146,7 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           boxShadow="rgba(0,0,0, 0.35) 0px 5px 15px"
           overflowY="auto"
           borderRadius="10px"
+          bg="whiteAlpha.900"
         >
           <Text as="h2" fontWeight="bold" textTransform="uppercase" mb={6}>
             Open Applications
@@ -206,6 +207,7 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           boxShadow="rgba(0,0,0, 0.35) 0px 5px 15px"
           overflowY="auto"
           borderRadius="10px"
+          bg="whiteAlpha.900"
         >
           <Text as="h2" fontWeight="bold" textTransform="uppercase" mb={6}>
             Pending Offers

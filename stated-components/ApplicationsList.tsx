@@ -35,6 +35,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
         overflowY="auto"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
         borderRadius="5px"
+        bg="whiteAlpha.900"
       >
         {isLoading && (
           <Flex flexDir="column" align="stretch" style={{ gap: "2px" }}>
@@ -53,14 +54,20 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
         {!isLoading && (
           <>
             <Table variant="striped" colorScheme="red">
-              <Thead>
+              <Thead
+                position="sticky"
+                top="0"
+                zIndex={3}
+                bg="white"
+                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+              >
                 <Tr>
-                  <Th>Applied Program</Th>
-                  <Th>Destined Program</Th>
-                  <Th>Academic Period</Th>
-                  <Th>Application Fee</Th>
-                  <Th>Commitment Fee</Th>
-                  <Th>Application Status</Th>
+                  <Th color="#e31837">Applied Program</Th>
+                  <Th color="#e31837">Destined Program</Th>
+                  <Th color="#e31837">Academic Period</Th>
+                  <Th color="#e31837">Application Fee</Th>
+                  <Th color="#e31837">Commitment Fee</Th>
+                  <Th color="#e31837">Application Status</Th>
                 </Tr>
               </Thead>
 

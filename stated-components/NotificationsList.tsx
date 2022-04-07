@@ -34,6 +34,7 @@ const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
         overflowY="auto"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
         borderRadius="5px"
+        bg="whiteAlpha.900"
       >
         {isLoading && (
           <Flex flexDir="column" align="stretch" style={{ gap: "2px" }}>
@@ -52,12 +53,18 @@ const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
         {!isLoading && (
           <>
             <Table variant="striped" colorScheme="red">
-              <Thead>
+              <Thead
+                position="sticky"
+                top="0"
+                zIndex={3}
+                bg="white"
+                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+              >
                 <Tr>
-                  <Th>Subject</Th>
-                  <Th>Importance</Th>
-                  <Th>Description</Th>
-                  <Th>Due Date</Th>
+                  <Th color="#e31837">Subject</Th>
+                  <Th color="#e31837">Importance</Th>
+                  <Th color="#e31837">Description</Th>
+                  <Th color="#e31837">Due Date</Th>
                 </Tr>
               </Thead>
 

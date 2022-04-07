@@ -23,13 +23,14 @@ const Dropdown: React.FunctionComponent<IDropdownProps> = (props) => {
       align="center"
       borderRadius="0.375rem"
       h="180px"
-      bg="#bdebaa"
+      bg="#767676"
       zIndex={90}
     >
       <Button
         leftIcon={<ArrowForwardIcon />}
         w="90%"
         h="40px"
+        color="#e31837"
         onClick={async () => {
           await axios.get("/api/user/logout");
           router.push("/");
@@ -39,12 +40,17 @@ const Dropdown: React.FunctionComponent<IDropdownProps> = (props) => {
           Sign Out
         </Text>
       </Button>
-      <Button leftIcon={<InfoOutlineIcon />} w="90%" h="40px">
+      <Button leftIcon={<InfoOutlineIcon />} w="90%" h="40px" color="#e31837">
         <Text w="50%" textAlign="start">
           Profile
         </Text>
       </Button>
-      <Button leftIcon={<QuestionOutlineIcon />} w="90%" h="40px">
+      <Button
+        leftIcon={<QuestionOutlineIcon />}
+        w="90%"
+        h="40px"
+        color="#e31837"
+      >
         <Text w="50%" textAlign="start">
           FAQ
         </Text>

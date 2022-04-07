@@ -1,4 +1,11 @@
-import { Box, Button, Center, Heading, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  useToast,
+  Image,
+} from "@chakra-ui/react";
 import { Form, Formik, FormikProps } from "formik";
 import { useRouter } from "next/router";
 import { NextPage } from "next/types";
@@ -21,11 +28,33 @@ const Login: NextPage<ILoginProps> = () => {
     <Center
       h="100vh"
       w="100%"
-      bg="linear-gradient(to top right, #bdebaa 0%, #7dd956 100%)"
+      bg="linear-gradient(to bottom right, #e31837 0%, #767676 100%)"
     >
-      <Box w="30%" h="80vh" bg="white" borderRadius="10px" p="2rem">
-        <Heading as="h2" p="1rem" py="2rem" fontWeight="normal">
-          Member Login
+      <Box
+        w="30%"
+        h="80vh"
+        bg="white"
+        borderRadius="10px"
+        p="2rem"
+        position="relative"
+      >
+        <Image
+          src="/york_scs_logo.jpg"
+          alt="York SCS"
+          position="absolute"
+          w="180px"
+          top="2.5rem"
+          right="3rem"
+        />
+        <Heading
+          as="h2"
+          p="1rem"
+          py="2rem"
+          fontWeight="normal"
+          color="#e31837"
+          fontSize="2.1rem"
+        >
+          Student Login
         </Heading>
         <Formik
           initialValues={{
@@ -42,12 +71,11 @@ const Login: NextPage<ILoginProps> = () => {
                   result.data.firstName + " " + result.data.lastName
                 }. Now redirecting you to home page.`,
                 status: "success",
-                duration: 3000,
+                duration: 1000,
                 isClosable: true,
-                onCloseComplete: () => router.push("/applications"),
+                onCloseComplete: () => router.push("/"),
               });
             } catch (error: any) {
-              console.log(error);
               return toast({
                 title: error.error.name,
                 description: error.error.message,
@@ -89,9 +117,10 @@ const Login: NextPage<ILoginProps> = () => {
                 <Button
                   type="submit"
                   isLoading={props.isSubmitting}
+                  disabled={props.isSubmitting}
                   mx="auto"
                   my="4rem"
-                  bgColor="#173f5e"
+                  bgColor="#e31837"
                   color="white"
                   px="2rem"
                   py="1.5rem"
