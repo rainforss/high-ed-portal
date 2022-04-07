@@ -106,7 +106,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                       {a.bsi_StudentApplication.bsi_name}
                     </Td>
                     <Td>{a.bsi_Program.mshied_name}</Td>
-                    <Td>{a.bsi_PrerequisiteProgram.mshied_name}</Td>
+                    <Td>{a.bsi_PrerequisiteProgram?.mshied_name}</Td>
                     <Td>
                       {
                         a[

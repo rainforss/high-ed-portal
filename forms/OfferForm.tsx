@@ -103,17 +103,23 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
               align="stretch"
             >
               <Flex>
+                {!!offers.bsi_PrerequisiteProgram && (
+                  <Stat>
+                    <StatLabel>Prerequisite Program</StatLabel>
+                    <StatNumber>
+                      {offers.bsi_PrerequisiteProgram.mshied_name}
+                    </StatNumber>
+                    <StatHelpText>
+                      Program to be completed for admission
+                    </StatHelpText>
+                  </Stat>
+                )}
                 <Stat>
-                  <StatLabel>Prerequisite Program</StatLabel>
-                  <StatNumber>
-                    {offers.bsi_PrerequisiteProgram.mshied_name}
-                  </StatNumber>
-                  <StatHelpText>
-                    Program to be completed for admission
-                  </StatHelpText>
-                </Stat>
-                <Stat>
-                  <StatLabel>Destined Program</StatLabel>
+                  <StatLabel>
+                    {offers.bsi_PrerequisiteProgram
+                      ? "Destined Program"
+                      : "Program"}
+                  </StatLabel>
                   <StatNumber>{offers.bsi_Program.mshied_name}</StatNumber>
                   <StatHelpText>Program of admission</StatHelpText>
                 </Stat>
@@ -138,24 +144,25 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
                   </StatHelpText>
                 </Stat>
               </Flex>
-              <Flex>
-                <Alert status="warning">
-                  <AlertIcon />
-                  You must complete &nbsp;
-                  <Text as="strong">
-                    {offers.bsi_PrerequisiteProgram.mshied_name}
-                  </Text>{" "}
-                  &nbsp; to be admitted into &nbsp;
-                  <Text as="strong">{offers.bsi_Program.mshied_name}</Text>
-                </Alert>
-              </Flex>
+              {offers.bsi_PrerequisiteProgram && (
+                <Flex>
+                  <Alert status="warning">
+                    <AlertIcon />
+                    You must complete &nbsp;
+                    <Text as="strong">
+                      {offers.bsi_PrerequisiteProgram?.mshied_name}
+                    </Text>{" "}
+                    &nbsp; to be admitted into &nbsp;
+                    <Text as="strong">{offers.bsi_Program.mshied_name}</Text>
+                  </Alert>
+                </Flex>
+              )}
               {!offers.bsi_StudentApplication.bsi_commitmentfeepaid && (
                 <Flex>
                   <Alert status="warning">
                     <AlertIcon />
                     You must pay the commitment fee to be able to accept the
                     offer.
-                    <Text as="strong">{offers.bsi_Program.mshied_name}</Text>
                   </Alert>
                 </Flex>
               )}
