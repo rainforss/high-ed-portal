@@ -17,6 +17,7 @@ import * as React from "react";
 import { useOffers } from "../hooks/useOffers";
 import { CheckIcon, CloseIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import { RiFileList3Fill } from "react-icons/ri";
 
 interface IOffersListProps {
   contactId: string;
@@ -93,9 +94,9 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                       <IconButton
                         aria-label="Details"
                         as="a"
-                        icon={<Icon as={FcViewDetails} color="red.500" />}
+                        icon={<Icon as={RiFileList3Fill} />}
                         bgColor="white"
-                        color="red"
+                        color="#767676"
                         fontSize="2xl"
                         mr={4}
                         href={`/offers/${a.bsi_offerid}`}

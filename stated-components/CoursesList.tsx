@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FcViewDetails } from "react-icons/fc";
+import { RiFileList3Fill } from "react-icons/ri";
 import { useCourseHistories } from "../hooks/useCourseHistories";
 
 interface ICoursesListProps {
@@ -77,8 +78,9 @@ const CoursesList: React.FunctionComponent<ICoursesListProps> = (props) => {
                         <IconButton
                           aria-label="Details"
                           as="a"
-                          icon={<Icon as={FcViewDetails} />}
+                          icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
+                          color="#767676"
                           fontSize="2xl"
                           mr={4}
                           href={`/courseHistories/${a.mshied_coursehistoryid}`}

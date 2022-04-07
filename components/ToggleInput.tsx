@@ -1,48 +1,46 @@
 import {
   ChakraProps,
   FormControl,
-  FormErrorMessage,
   FormLabel,
-  Input,
+  Switch,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useField } from "formik";
 import * as React from "react";
 
-interface ITextInputProps extends ChakraProps {
-  type: React.HTMLInputTypeAttribute;
+interface IToggleInputProps extends ChakraProps {
   id: string;
   name: string;
   label: string;
-  autoComplete?: string;
   disabled?: boolean;
 }
 
-const TextInput: React.FunctionComponent<ITextInputProps> = ({
-  type,
+const ToggleInput: React.FunctionComponent<IToggleInputProps> = ({
   id,
   name,
   label,
-  autoComplete,
   disabled,
   ...chakraProps
 }) => {
   const [field, meta, _helpers] = useField(name);
   return (
     <FormControl isInvalid={!!(meta.error && meta.touched)} {...chakraProps}>
-      <FormLabel htmlFor={id}>{label}</FormLabel>
-      <Input
-        {...field}
+      <FormLabel htmlFor={id} mb="0" display="inline">
+        {label}
+      </FormLabel>
+
+      <Switch
         id={id}
         name={name}
-        type={type}
         value={field.value}
-        autoComplete={autoComplete || "off"}
-        disabled={disabled}
-        borderColor="#767676"
+        onChange={(e) => {
+          console.log(e.target.value);
+          _helpers.setValue(e.target.value === "true" ? false : true);
+        }}
       />
       {!!meta.error && <FormErrorMessage>{meta.error}</FormErrorMessage>}
     </FormControl>
   );
 };
 
-export default TextInput;
+export default ToggleInput;

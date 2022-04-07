@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FcViewDetails } from "react-icons/fc";
+import { RiFileList3Fill } from "react-icons/ri";
 import { useTasks } from "../hooks/useTasks";
 
 interface INotificationsListProps {
@@ -76,8 +77,9 @@ const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
                         <IconButton
                           aria-label="Details"
                           as="a"
-                          icon={<Icon as={FcViewDetails} />}
+                          icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
+                          color="#767676"
                           fontSize="2xl"
                           mr={4}
                           href={`/tasks/${a.activityid}`}

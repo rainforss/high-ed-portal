@@ -13,7 +13,7 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import { FcViewDetails } from "react-icons/fc";
+import { RiFileList3Fill } from "react-icons/ri";
 import * as React from "react";
 import { useApplications } from "../hooks/useApplications";
 import { PlusSquareIcon } from "@chakra-ui/icons";
@@ -79,8 +79,9 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                         <IconButton
                           aria-label="Details"
                           as="a"
-                          icon={<Icon as={FcViewDetails} />}
+                          icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
+                          color="#767676"
                           fontSize="2xl"
                           mr={4}
                           href={`/applications/${a.bsi_studentapplicationid}`}

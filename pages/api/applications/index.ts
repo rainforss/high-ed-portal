@@ -44,9 +44,12 @@ async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
         newApplication[
           "bsi_Program@odata.bind"
         ] = `/mshied_academicperiods(${req.body.programId})`;
-        newApplication[
-          "bsi_DestinedProgram@odata.bind"
-        ] = `/mshied_programs(${req.body.destinedProgramId})`;
+        if (req.body.destinedProgramId) {
+          newApplication[
+            "bsi_DestinedProgram@odata.bind"
+          ] = `/mshied_programs(${req.body.destinedProgramId})`;
+        }
+
         newApplication.bsi_name = req.body.name;
 
         const createdApplication = await dynamicsApplication(

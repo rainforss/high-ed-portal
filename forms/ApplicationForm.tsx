@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import SelectInput from "../components/SelectInput";
 import TextInput from "../components/TextInput";
+import ToggleInput from "../components/ToggleInput";
 import { useAcademicPeriods } from "../hooks/useAcademicPeriods";
 import { useApplications } from "../hooks/useApplications";
 import { useProgramLevels } from "../hooks/useProgramLevels";
@@ -40,6 +41,7 @@ type ApplicationValues = {
   academicPeriodId: string;
   applicantId: string;
   missingDocuments?: string;
+  appliedToTraditional: boolean;
 };
 
 const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
@@ -73,11 +75,12 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
 
   return (
     <Box
-      boxShadow="royalblue 0px 5px 15px"
+      boxShadow="rgba(0,0,0,0.3) 0px 5px 15px"
       borderRadius="5px"
       h="100%"
       p="1.5rem"
       position="relative"
+      bg="whiteAlpha.900"
     >
       {isApplicationLoading && !!applicationId && (
         <Center h="100%" flexDirection="column">
@@ -113,6 +116,9 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     applications.bsi_AcademicPeriod.mshied_academicperiodid,
                   applicantId: applications.bsi_Applicant.contactid,
                   missingDocuments: applications.bsi_missingdocuments,
+                  appliedToTraditional: applications.bsi_DestinedProgram
+                    ? true
+                    : false,
                 }
               : {
                   name: "",
@@ -122,6 +128,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                   academicPeriodId: "",
                   applicantId: applicantId,
                   missingDocuments: "",
+                  appliedToTraditional: false,
                 }
           }
           onSubmit={async (values, actions) => {
@@ -170,7 +177,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
             }
           }}
         >
-          {({ isSubmitting }: FormikProps<ApplicationValues>) => {
+          {({ isSubmitting, values }: FormikProps<ApplicationValues>) => {
             return (
               <Form
                 style={{
@@ -180,16 +187,6 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                   flexWrap: "wrap",
                 }}
               >
-                <TextInput
-                  name="name"
-                  id="name"
-                  type="text"
-                  label="Application Name"
-                  disabled={!!applicationId}
-                  w="50%"
-                  p="1rem"
-                />
-
                 {isProgramsLoading && (
                   <Skeleton
                     isLoaded={!isProgramsLoading}
@@ -200,21 +197,44 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                 )}
 
                 {!isProgramsLoading && (
-                  <SelectInput
-                    options={programs.filter(
-                      (p: Program) =>
-                        p.bsi_iscontinuingeducation || p.bsi_islanguageprogram
-                    )}
-                    id="programId"
-                    name="programId"
-                    label="Program"
-                    disabled={!!applicationId}
-                    w="100%"
-                    p="1rem"
-                  />
+                  <>
+                    <TextInput
+                      name="name"
+                      id="name"
+                      type="text"
+                      label="Application Name"
+                      disabled={!!applicationId}
+                      w="50%"
+                      p="1rem"
+                    />
+                    <SelectInput
+                      options={programs.filter(
+                        (p: Program) =>
+                          p.bsi_iscontinuingeducation || p.bsi_islanguageprogram
+                      )}
+                      id="programId"
+                      name="programId"
+                      label="Program"
+                      disabled={!!applicationId}
+                      w="50%"
+                      p="1rem"
+                    />
+                  </>
                 )}
 
                 {!isProgramsLoading && (
+                  <ToggleInput
+                    id="appliedToTraditional"
+                    name="appliedToTraditional"
+                    label="Have you applied to a traditional program in York University"
+                    disabled={!!applicationId}
+                    w="100%"
+                    p="1rem"
+                    py="2rem"
+                  />
+                )}
+
+                {!isProgramsLoading && !!values.appliedToTraditional && (
                   <SelectInput
                     options={programs}
                     id="destinedProgramId"

@@ -70,12 +70,13 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
       h="100%"
       p="2rem"
       position="relative"
+      bg="whiteAlpha.900"
     >
       {!isLoading && (
         <>
           <Flex flexDirection="column">
             <Flex justify="space-between" alignItems="center" mb={12}>
-              <Text as="h2" fontWeight="bold" fontSize="1.5rem">
+              <Text as="h2" fontWeight="bold" fontSize="1.7rem" color="#e31837">
                 {offers.bsi_name}
               </Text>
               <Badge fontSize="1rem" bg="red.400" color="white">
@@ -142,7 +143,7 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
           </Flex>
           {(offers.bsi_offerstatus === 861560000 ||
             offers.bsi_offerstatus === 861560004) && (
-            <Flex position="absolute" bottom="4rem" left="2rem">
+            <Flex position="absolute" bottom="2rem" left="2rem">
               <ButtonGroup spacing="6">
                 <Button
                   bg="#e92731"
@@ -165,14 +166,16 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
           )}
           <Button
             position="absolute"
-            bottom="4rem"
+            bottom="2rem"
             right="2rem"
             px={8}
             as="a"
             href="/offers"
             disabled={submitting}
+            variant="outline"
+            borderColor="#767676"
           >
-            Exit
+            EXIT
           </Button>
         </>
       )}

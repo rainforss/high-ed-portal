@@ -149,7 +149,7 @@ const DocumentsDrawer: React.FunctionComponent<IDocumentsDrawerProps> = ({
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Supporting Documents</DrawerHeader>
+        <DrawerHeader color="#e31837">Supporting Documents</DrawerHeader>
 
         <DrawerBody
           display="flex"
@@ -182,7 +182,7 @@ const DocumentsDrawer: React.FunctionComponent<IDocumentsDrawerProps> = ({
 
         <DrawerFooter>
           <Button
-            bgColor="#7dd956"
+            bgColor="#e31837"
             color="white"
             mr={3}
             onClick={handleFileUpload}

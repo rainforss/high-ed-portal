@@ -40,6 +40,7 @@ const SelectInput: React.FunctionComponent<ISelectInputProps> = ({
         onChange={field.onChange}
         value={field.value}
         placeholder=""
+        borderColor="#767676"
       >
         <option value="">-- Please Select an Option --</option>
         {options.map((o) => {

@@ -1,8 +1,8 @@
-import { Box, Flex, Icon, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { NavigationItem } from "../types/components";
-import { ImFileZip } from "react-icons/im";
-import { SiHtmlacademy, SiMicrosoftacademic } from "react-icons/si";
+import { SiMicrosoftacademic } from "react-icons/si";
+import { RiFilePaper2Fill } from "react-icons/ri";
 import {
   MdDashboard,
   MdEditCalendar,
@@ -13,14 +13,19 @@ import { IoIosSchool } from "react-icons/io";
 import NavItem from "./NavItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { FaSchool } from "react-icons/fa";
 
 interface ISidebarProps {}
 
 const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
   const navItems: NavigationItem[] = [
     { label: "Dashboard", url: "", icon: MdDashboard },
-    { label: "Programs", url: "programs", icon: SiHtmlacademy },
-    { label: "My Applications", url: "applications", icon: ImFileZip },
+    { label: "Programs", url: "programs", icon: FaSchool },
+    {
+      label: "My Applications",
+      url: "applications",
+      icon: RiFilePaper2Fill,
+    },
     { label: "My Offers", url: "offers", icon: MdLocalOffer },
     { label: "My Programs", url: "my-programs", icon: IoIosSchool },
     { label: "My Courses", url: "my-courses", icon: SiMicrosoftacademic },
