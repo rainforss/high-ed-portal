@@ -18,6 +18,7 @@ const NavItem: React.FunctionComponent<INavItemProps> = ({
       p={2}
       bgColor={active ? "#e92731" : "white"}
       color={active ? "whiteAlpha.900" : "#63605f"}
+      boxShadow={active ? "rgba(0,0,0, 0.35) 0px 5px 15px" : "none"}
       borderRadius="15px"
       style={{ gap: "15px" }}
       as="a"

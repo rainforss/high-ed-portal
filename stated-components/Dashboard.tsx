@@ -11,7 +11,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { MdChat, MdNotifications, MdSchool } from "react-icons/md";
+import {
+  MdChat,
+  MdLocalOffer,
+  MdNotifications,
+  MdSchool,
+} from "react-icons/md";
+import { RiFilePaper2Fill } from "react-icons/ri";
 import { SiMicrosoftacademic } from "react-icons/si";
 import ApplicationCard from "../components/ApplicationCard";
 import OfferCard from "../components/OfferCard";
@@ -47,7 +53,6 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
     >
       <Flex w="100%" h="32%" justify="space-between">
         <Link
-          w="30%"
           h="100%"
           position="relative"
           borderRadius="10px"
@@ -78,7 +83,7 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           </Flex>
         </Link>
         <Link
-          w="30%"
+          h="100%"
           position="relative"
           borderRadius="10px"
           boxShadow="rgba(0,0,0, 0.35) 0px 5px 15px"
@@ -108,7 +113,7 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           </Flex>
         </Link>
         <Link
-          w="30%"
+          h="100%"
           position="relative"
           borderRadius="10px"
           boxShadow="rgba(0,0,0, 0.35) 0px 5px 15px"
@@ -148,9 +153,22 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           borderRadius="10px"
           bg="whiteAlpha.900"
         >
-          <Text as="h2" fontWeight="bold" textTransform="uppercase" mb={6}>
-            Open Applications
-          </Text>
+          <Flex align="center" mb={6}>
+            <Icon
+              as={RiFilePaper2Fill}
+              mr={4}
+              color="#e31837"
+              fontSize="1.2rem"
+            />
+            <Text
+              as="h2"
+              fontWeight="bold"
+              textTransform="uppercase"
+              color="gray.500"
+            >
+              Open Applications
+            </Text>
+          </Flex>
           {isApplicationsLoading && (
             <Center h="100%" flexDirection="column">
               <Spinner size="xl" />
@@ -209,9 +227,18 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           borderRadius="10px"
           bg="whiteAlpha.900"
         >
-          <Text as="h2" fontWeight="bold" textTransform="uppercase" mb={6}>
-            Pending Offers
-          </Text>
+          <Flex align="center" mb={6}>
+            <Icon as={MdLocalOffer} mr={4} color="#e31837" fontSize="1.2rem" />
+            <Text
+              as="h2"
+              fontWeight="bold"
+              textTransform="uppercase"
+              color="gray.500"
+            >
+              Pending Offers
+            </Text>
+          </Flex>
+
           {isOffersLoading && (
             <Center h="100%" flexDirection="column">
               <Spinner size="xl" />
