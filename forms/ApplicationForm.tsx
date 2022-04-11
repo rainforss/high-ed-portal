@@ -34,7 +34,6 @@ interface IApplicationFormProps {
 }
 
 type ApplicationValues = {
-  name: string;
   programId: string;
   destinedProgramId: string;
   programLevelId: string;
@@ -105,7 +104,6 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
           initialValues={
             applications
               ? {
-                  name: applications.bsi_name,
                   programId: applications.bsi_Program.mshied_programid,
                   destinedProgramId: applications.bsi_DestinedProgram
                     ? applications.bsi_DestinedProgram.mshied_programid
@@ -122,7 +120,6 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     : false,
                 }
               : {
-                  name: "",
                   programId: programId as string,
                   destinedProgramId: "",
                   programLevelId: "",
@@ -150,7 +147,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
               );
               await axios.post(
                 `/api/applications/${createdApplication.data.bsi_studentapplicationid}/documents`,
-                { studentApplicationName: values.name }
+                { studentApplicationName: "" }
               );
 
               toast({
@@ -200,7 +197,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
 
                 {!isProgramsLoading && (
                   <>
-                    <TextInput
+                    {/* <TextInput
                       name="name"
                       id="name"
                       type="text"
@@ -208,7 +205,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                       disabled={!!applicationId}
                       w="50%"
                       p="1rem"
-                    />
+                    /> */}
                     <SelectInput
                       options={programs.filter(
                         (p: Program) =>
@@ -352,10 +349,10 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
           }}
         </Formik>
       )}
-      {!!applicationId && applications && !!applications.bsi_name && (
+      {!!applicationId && applications && (
         <DocumentsDrawer
           applicationId={applicationId}
-          applicationName={applications.bsi_name}
+          applicationName={applications.bsi_name || ""}
           isOpen={isOpen}
           onClose={memoizedOnClose}
         />

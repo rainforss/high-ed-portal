@@ -55,7 +55,9 @@ export interface Application extends Entity {
   bsi_studentapplicationid: string;
   "bsi_applicationstatus@OData.Community.Display.V1.FormattedValue": string;
   bsi_applicationfeepaid: boolean;
+  bsi_applicaitonfeepaymentlink: string;
   bsi_commitmentfeepaid: boolean;
+  bsi_commitmentfeepaymentlink: string;
   bsi_packagecomplete: boolean;
   bsi_missingdocuments: string;
   bsi_Program: {
@@ -104,10 +106,12 @@ export interface Offer {
   bsi_PrerequisiteProgram: {
     mshied_name: string;
     mshied_programid: string;
+    bsi_commitmentfee: number;
   };
   bsi_StudentApplication: {
     bsi_name: string;
     bsi_commitmentfeepaid?: boolean;
+    bsi_commitmentfeepaymentlink?: string;
   };
   bsi_AcademicPeriod: AcademicPeriod;
   bsi_expirationdate: string;

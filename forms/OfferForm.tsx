@@ -161,8 +161,22 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
                 <Flex>
                   <Alert status="warning">
                     <AlertIcon />
-                    You must pay the commitment fee to be able to accept the
-                    offer.
+                    You must pay the commitment fee of amount &nbsp;
+                    <Text as="strong">
+                      ${offers.bsi_PrerequisiteProgram.bsi_commitmentfee}
+                    </Text>
+                    &nbsp; to be able to accept the offer. Click&nbsp;
+                    <Text
+                      as="a"
+                      fontWeight="bold"
+                      href={
+                        offers.bsi_StudentApplication
+                          .bsi_commitmentfeepaymentlink
+                      }
+                    >
+                      here
+                    </Text>
+                    &nbsp;to pay.
                   </Alert>
                 </Flex>
               )}

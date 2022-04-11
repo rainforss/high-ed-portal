@@ -69,6 +69,8 @@ async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
           tokenResponses[0].accessToken
         ).getAllDocumentsForStudentApplication(applicationId as string);
 
+        console.log(documentLocations);
+
         const documents = await axios.get(
           `https://graph.microsoft.com/v1.0/sites/betachdemo2020pcsandbox.sharepoint.com/drives/b!fUo7ChrZnEaeo-H6G3Ywc2pUAv_Ug6NBpThU2QY6p8yyJvO7pbreT7cDtwqrbKXV/root:/${documentLocations[0].relativeurl}:/children`,
           {
@@ -78,6 +80,8 @@ async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
           }
         );
         await disconnect();
+
+        console.log(documents);
 
         return res.status(200).json(documents.data.value);
 

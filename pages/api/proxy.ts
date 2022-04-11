@@ -1,8 +1,6 @@
 import { ClientCredentialRequest } from "@azure/msal-node";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
-import { dynamicsAcademicPeriod } from "../../services/dynamicsAcademicPeriod";
-import { dynamicsProgram } from "../../services/dynamicsProgram";
 import { instantiateCca } from "../../utils/cca";
 import { connect, disconnect } from "../../utils/redis";
 import { withSessionRoute } from "../../utils/withSession";

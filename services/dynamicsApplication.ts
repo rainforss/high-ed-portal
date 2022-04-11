@@ -43,7 +43,7 @@ export const dynamicsApplication = (accessToken: string) => {
         config,
         "bsi_studentapplications",
         applicationId,
-        `$filter=statecode eq 0&$select=bsi_name,bsi_applicationstatus,bsi_applicationfeepaid,bsi_commitmentfeepaid,bsi_packagecomplete,bsi_missingdocuments&$expand=bsi_Program($select=mshied_name),bsi_AcademicPeriod($select=mshied_name),bsi_ProgramLevel($select=mshied_name),bsi_Applicant($select=fullname),bsi_DestinedProgram($select=mshied_name)`,
+        `$filter=statecode eq 0&$select=bsi_name,bsi_applicationstatus,bsi_applicationfeepaid,bsi_applicationfeepaymentlink,bsi_commitmentfeepaymentlink,bsi_commitmentfeepaid,bsi_packagecomplete,bsi_missingdocuments&$expand=bsi_Program($select=mshied_name),bsi_AcademicPeriod($select=mshied_name),bsi_ProgramLevel($select=mshied_name),bsi_Applicant($select=fullname),bsi_DestinedProgram($select=mshied_name)`,
         { representation: true }
       );
 

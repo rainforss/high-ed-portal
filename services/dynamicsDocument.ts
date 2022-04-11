@@ -19,7 +19,7 @@ export const dynamicsDocument = (accessToken: string) => {
     },
     createDocumentLocationForStudentApplication: async (
       studentApplicationId: string,
-      studentApplicationName: string
+      _studentApplicationName: string
     ) => {
       const documentLocation = await createWithReturnData(
         config,
@@ -30,9 +30,7 @@ export const dynamicsDocument = (accessToken: string) => {
             "/sharepointdocumentlocations(514f1e36-fc89-ec11-8d20-000d3af4f149)",
           "regardingobjectid_bsi_studentapplication@odata.bind": `/bsi_studentapplications(${studentApplicationId})`,
           relativeurl:
-            studentApplicationName +
-            "_" +
-            studentApplicationId.replace(/-/g, "").toUpperCase(),
+            "_" + studentApplicationId.replace(/-/g, "").toUpperCase(),
         },
         "$select=name,relativeurl"
       );

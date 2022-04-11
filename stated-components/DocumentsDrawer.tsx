@@ -32,7 +32,7 @@ interface IDocumentsDrawerProps {
 
 const DocumentsDrawer: React.FunctionComponent<IDocumentsDrawerProps> = ({
   applicationId,
-  applicationName,
+  applicationName = "",
   onClose,
   isOpen,
 }) => {
