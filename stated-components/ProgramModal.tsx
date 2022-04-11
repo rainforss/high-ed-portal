@@ -65,6 +65,12 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
               </Flex>
               <Box>
                 <Text fontWeight="bold" mb={4}>
+                  Program Description
+                </Text>
+                <Text as="p">{program.bsi_description || "None"}</Text>
+              </Box>
+              <Box>
+                <Text fontWeight="bold" mb={4}>
                   Program Requirements
                 </Text>
                 {program.mshied_ProgramRequirement_Programid_mshie.length ===

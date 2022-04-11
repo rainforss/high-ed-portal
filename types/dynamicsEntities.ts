@@ -31,6 +31,7 @@ export interface Program extends Entity {
   mshied_name: string;
   mshied_programid: string;
   mshied_code: string;
+  bsi_description: string;
   bsi_interviewrequired: boolean | null;
   bsi_applicationfee: number;
   bsi_commitmentfee: number;
