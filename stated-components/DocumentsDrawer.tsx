@@ -84,9 +84,7 @@ const DocumentsDrawer: React.FunctionComponent<IDocumentsDrawerProps> = ({
         uploadSessions.push(
           axios.post(
             `/api/proxy?path=/${
-              applicationName +
-              "_" +
-              applicationId.replaceAll("-", "").toUpperCase()
+              "_" + applicationId.replaceAll("-", "").toUpperCase()
             }/${f.name}:`,
             {
               item: {
