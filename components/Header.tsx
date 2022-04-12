@@ -40,6 +40,8 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
   } = useDisclosure();
   const { tasks, isLoading, isError } = useTasks(props.userId);
 
+  console.log(props.firstName, props.lastName);
+
   return (
     <>
       <Flex
@@ -87,8 +89,8 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
               {props.username && (
                 <Avatar
                   size="sm"
-                  name={props.username}
-                  src="https://bit.ly/dan-abramov"
+                  name={props.firstName + " " + props.lastName}
+                  src="https://bit.ly/broken-link"
                 />
               )}
               <Text ml={4}>{props.firstName + " " + props.lastName}</Text>
