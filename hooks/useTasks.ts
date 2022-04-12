@@ -2,9 +2,9 @@ import useSWR from "swr";
 import { Task } from "../types/dynamicsEntities";
 import { fetcher } from "../utils/dataFetcher";
 
-export const useTasks = (contactId: string) => {
+export const useTasks = (contactId?: string) => {
   const { data, error, mutate } = useSWR(
-    `/api/contact/${contactId}/tasks`,
+    contactId ? `/api/contact/${contactId}/tasks` : null,
     fetcher,
     {
       revalidateIfStale: false,

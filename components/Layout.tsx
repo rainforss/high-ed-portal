@@ -21,6 +21,7 @@ const Layout: React.FunctionComponent<ILayoutProps> = (props) => {
         <Sidebar />
         <Header
           username={props.user?.username}
+          userId={props.user?._id}
           firstName={props.user?.firstName}
           lastName={props.user?.lastName}
           userLoading={props.userLoading}
