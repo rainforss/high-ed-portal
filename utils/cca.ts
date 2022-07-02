@@ -21,7 +21,7 @@ export const instantiateCca = async () => {
     //   getcache
     // );
 
-    const cachePlugin = serverlessCachePluginFunc(cachePath);
+    const cachePlugin = serverlessCachePluginFunc("./data/cache.json");
     const clientConfig: Configuration = {
       auth: {
         clientId: process.env.CLIENT_ID as string,
