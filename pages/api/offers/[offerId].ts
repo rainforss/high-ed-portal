@@ -2,6 +2,7 @@ import { ClientCredentialRequest } from "@azure/msal-node";
 import { NextApiRequest, NextApiResponse } from "next";
 import { dynamicsOffer } from "../../../services/dynamicsOffer";
 import { instantiateCca } from "../../../utils/cca";
+import { connect, disconnect } from "../../../utils/redis";
 import { withSessionRoute } from "../../../utils/withSession";
 
 async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
@@ -13,7 +14,7 @@ async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
       error.name = "Unauthorized";
       throw error;
     }
-    // await connect();
+    await connect();
     const cca = await instantiateCca();
     const clientCredentialsRequest: ClientCredentialRequest = {
       scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -38,7 +39,7 @@ async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
           tokenResponse.accessToken
         ).getOfferByOfferId(offerId as string);
 
-        // await disconnect();
+        await disconnect();
 
         return res.status(200).json(offer);
 
@@ -47,7 +48,7 @@ async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
           tokenResponse.accessToken
         ).updateOfferByOfferId(offerId as string, req.body.offer);
 
-        // await disconnect();
+        await disconnect();
 
         return res.status(200).json(updatedOffer);
 
@@ -59,7 +60,7 @@ async function offerIdRoute(req: NextApiRequest, res: NextApiResponse) {
         throw error;
     }
   } catch (err: any) {
-    // await disconnect();
+    await disconnect();
     if (err.name === "Method Not Allowed") {
       return res
         .status(405)

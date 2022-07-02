@@ -2,6 +2,7 @@ import { ClientCredentialRequest } from "@azure/msal-node";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { instantiateCca } from "../../utils/cca";
+import { connect, disconnect } from "../../utils/redis";
 import { withSessionRoute } from "../../utils/withSession";
 
 async function proxyRoute(req: NextApiRequest, res: NextApiResponse) {
@@ -13,7 +14,7 @@ async function proxyRoute(req: NextApiRequest, res: NextApiResponse) {
       error.name = "Unauthorized";
       throw error;
     }
-    // await connect();
+    await connect();
     const cca = await instantiateCca();
     const graphTokenRequest: ClientCredentialRequest = {
       scopes: ["https://graph.microsoft.com/.default"],
@@ -43,11 +44,11 @@ async function proxyRoute(req: NextApiRequest, res: NextApiResponse) {
       }
     );
 
-    // await disconnect();
+    await disconnect();
 
     return res.status(200).json(result.data);
   } catch (err: any) {
-    // await disconnect();
+    await disconnect();
     if (err.name === "Unauthorized") {
       return res
         .status(401)

@@ -1,6 +1,6 @@
 import { ConfidentialClientApplication, Configuration } from "@azure/msal-node";
-import path from "path";
-import { serverlessCachePluginFunc } from "./serverlessCachePlugin";
+import { cachePluginFunc } from "./cachePlugin";
+import { getcache, setcache, tokenKeyExist } from "./redis";
 
 let cachedCca: ConfidentialClientApplication | null = null;
 
@@ -13,15 +13,11 @@ export const instantiateCca = async () => {
     if (cachedCca) {
       return cachedCca;
     }
-
-    const cachePath = path.join(process.cwd(), "data", "cache.json");
-    // const cachePlugin = await cachePluginFunc(
-    //   tokenKeyExist,
-    //   setcache,
-    //   getcache
-    // );
-
-    const cachePlugin = serverlessCachePluginFunc(cachePath);
+    const cachePlugin = await cachePluginFunc(
+      tokenKeyExist,
+      setcache,
+      getcache
+    );
     const clientConfig: Configuration = {
       auth: {
         clientId: process.env.CLIENT_ID as string,

@@ -1,7 +1,9 @@
 import { ClientCredentialRequest } from "@azure/msal-node";
 import { NextApiRequest, NextApiResponse } from "next";
 import { dynamicsAcademicPeriod } from "../../services/dynamicsAcademicPeriod";
+import { dynamicsProgram } from "../../services/dynamicsProgram";
 import { instantiateCca } from "../../utils/cca";
+import { connect, disconnect } from "../../utils/redis";
 import { withSessionRoute } from "../../utils/withSession";
 
 async function academicPeriodsRoute(req: NextApiRequest, res: NextApiResponse) {
@@ -13,7 +15,7 @@ async function academicPeriodsRoute(req: NextApiRequest, res: NextApiResponse) {
     //   error.name = "Unauthorized";
     //   throw error;
     // }
-    // await connect();
+    await connect();
     const cca = await instantiateCca();
     const clientCredentialsRequest: ClientCredentialRequest = {
       scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -33,11 +35,11 @@ async function academicPeriodsRoute(req: NextApiRequest, res: NextApiResponse) {
       tokenResponse.accessToken
     ).getAll();
 
-    // await disconnect();
+    await disconnect();
 
     return res.status(200).json(academicPeriods);
   } catch (err: any) {
-    // await disconnect();
+    await disconnect();
     // if (err.name === "Unauthorized") {
     //   return res
     //     .status(401)

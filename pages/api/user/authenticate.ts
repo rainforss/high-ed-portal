@@ -4,9 +4,10 @@ import { dynamicsContact } from "../../../services/dynamicsContact";
 import { instantiateCca } from "../../../utils/cca";
 import bcrypt from "bcrypt";
 import { withSessionRoute } from "../../../utils/withSession";
+import { connect, disconnect } from "../../../utils/redis";
 
 async function authenticateRoute(req: NextApiRequest, res: NextApiResponse) {
-  // await connect();
+  await connect();
   const cca = await instantiateCca();
   const clientCredentialsRequest: ClientCredentialRequest = {
     scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -55,7 +56,7 @@ async function authenticateRoute(req: NextApiRequest, res: NextApiResponse) {
         };
 
         await req.session.save();
-        // await disconnect();
+        await disconnect();
         return res.status(200).json({
           _id: users[0].contactid,
           firstName: users[0].firstname,
@@ -65,7 +66,7 @@ async function authenticateRoute(req: NextApiRequest, res: NextApiResponse) {
           epbcId: users[0].bsi_epbcid,
         });
       } catch (err: any) {
-        // await disconnect();
+        await disconnect();
         if (err.name === "Credential Mismatch") {
           return res
             .status(401)
@@ -81,7 +82,7 @@ async function authenticateRoute(req: NextApiRequest, res: NextApiResponse) {
       }
 
     default:
-      // await disconnect();
+      await disconnect();
       return res.status(405).json({
         error: {
           name: "Not Supported",

@@ -4,9 +4,10 @@ import { dynamicsContact } from "../../../services/dynamicsContact";
 import { instantiateCca } from "../../../utils/cca";
 import bcrypt from "bcrypt";
 import { withSessionRoute } from "../../../utils/withSession";
+import { connect, disconnect } from "../../../utils/redis";
 
 async function registerRoute(req: NextApiRequest, res: NextApiResponse) {
-  // await connect();
+  await connect();
   const cca = await instantiateCca();
   const clientCredentialsRequest: ClientCredentialRequest = {
     scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -54,7 +55,7 @@ async function registerRoute(req: NextApiRequest, res: NextApiResponse) {
 
     await req.session.save();
 
-    // await disconnect();
+    await disconnect();
     return res.status(200).json({
       _id: createdUser.contactid,
       firstname: user.firstName,
@@ -63,7 +64,7 @@ async function registerRoute(req: NextApiRequest, res: NextApiResponse) {
       username: user.username,
     });
   } catch (err: any) {
-    // await disconnect();
+    await disconnect();
     if (err.name === "Duplicate Account") {
       return res
         .status(400)

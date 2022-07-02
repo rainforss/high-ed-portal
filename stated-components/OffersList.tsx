@@ -32,7 +32,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
       `/api/contact/${props.contactId}/offers/${offerId}`,
       { offer: { bsi_offerstatus: 861560001 } }
     );
-
+    console.log(offer.data);
     await mutateOffers();
   };
   const rejectOffer = async (offerId: string) => {
@@ -40,7 +40,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
       `/api/contact/${props.contactId}/offers/${offerId}`,
       { offer: { bsi_offerstatus: 861560002 } }
     );
-
+    console.log(offer.data);
     await mutateOffers();
   };
   const [updating, setUpdating] = React.useState(false);

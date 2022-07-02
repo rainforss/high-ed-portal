@@ -40,6 +40,8 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
   } = useDisclosure();
   const { tasks, isLoading, isError } = useTasks(props.userId);
 
+  console.log(props.firstName, props.lastName);
+
   return (
     <>
       <Flex
