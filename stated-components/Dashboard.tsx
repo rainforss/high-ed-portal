@@ -41,8 +41,6 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
     isError: isOffersError,
   } = useOffers(props.contactId);
 
-  console.log(offers);
-
   return (
     <Flex
       w="100%"

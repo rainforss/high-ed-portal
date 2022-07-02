@@ -4,7 +4,6 @@ import { dynamicsApplication } from "../../../services/dynamicsApplication";
 import { dynamicsApplicationProcess } from "../../../services/dynamicsApplicationProcess";
 import { ApplicationDTO } from "../../../types/dynamicsEntities";
 import { instantiateCca } from "../../../utils/cca";
-import { connect, disconnect } from "../../../utils/redis";
 import { withSessionRoute } from "../../../utils/withSession";
 
 async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
@@ -18,7 +17,7 @@ async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
     }
     switch (req.method) {
       case "POST":
-        await connect();
+        // await connect();
         const cca = await instantiateCca();
         const clientCredentialsRequest: ClientCredentialRequest = {
           scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -62,7 +61,7 @@ async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
           createdApplication.bsi_studentapplicationid as string
         );
 
-        await disconnect();
+        // await disconnect();
 
         return res.status(200).json(createdApplication);
 
@@ -74,7 +73,7 @@ async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
         throw error;
     }
   } catch (err: any) {
-    await disconnect();
+    // await disconnect();
     if (err.name === "Method Not Allowed") {
       return res
         .status(405)

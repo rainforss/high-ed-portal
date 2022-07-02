@@ -1,16 +1,8 @@
 import { ClientCredentialRequest } from "@azure/msal-node";
-import {
-  AuthenticationProvider,
-  AuthenticationProviderOptions,
-  ClientOptions,
-} from "@microsoft/microsoft-graph-client";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
-import { dynamicsApplication } from "../../../../../services/dynamicsApplication";
 import { dynamicsDocument } from "../../../../../services/dynamicsDocument";
-import { ApplicationDTO } from "../../../../../types/dynamicsEntities";
 import { instantiateCca } from "../../../../../utils/cca";
-import { connect, disconnect } from "../../../../../utils/redis";
 import { withSessionRoute } from "../../../../../utils/withSession";
 
 async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
@@ -22,7 +14,7 @@ async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
       error.name = "Unauthorized";
       throw error;
     }
-    await connect();
+    // await connect();
     const cca = await instantiateCca();
     const clientCredentialsRequest: ClientCredentialRequest = {
       scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -77,7 +69,7 @@ async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
             },
           }
         );
-        await disconnect();
+        // await disconnect();
 
         return res.status(200).json(documents.data.value);
 
@@ -103,7 +95,7 @@ async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
           }
         );
 
-        await disconnect();
+        // await disconnect();
 
         return res.status(200).json(createdDocumentLocation);
 
@@ -115,7 +107,7 @@ async function documentsRoute(req: NextApiRequest, res: NextApiResponse) {
         throw error;
     }
   } catch (err: any) {
-    await disconnect();
+    // await disconnect();
     if (err.name === "Method Not Allowed") {
       return res
         .status(405)

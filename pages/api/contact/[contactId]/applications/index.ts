@@ -2,7 +2,6 @@ import { ClientCredentialRequest } from "@azure/msal-node";
 import { NextApiRequest, NextApiResponse } from "next";
 import { dynamicsApplication } from "../../../../../services/dynamicsApplication";
 import { instantiateCca } from "../../../../../utils/cca";
-import { connect, disconnect } from "../../../../../utils/redis";
 import { withSessionRoute } from "../../../../../utils/withSession";
 
 async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
@@ -14,7 +13,7 @@ async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
       error.name = "Unauthorized";
       throw error;
     }
-    await connect();
+    // await connect();
     const cca = await instantiateCca();
     const clientCredentialsRequest: ClientCredentialRequest = {
       scopes: [`${process.env.CLIENT_URL}/.default`],
@@ -34,11 +33,11 @@ async function applicationsRoute(req: NextApiRequest, res: NextApiResponse) {
       tokenResponse.accessToken
     ).getApplicationsByContactId(req.session.user._id);
 
-    await disconnect();
+    // await disconnect();
 
     return res.status(200).json(applications);
   } catch (err: any) {
-    await disconnect();
+    // await disconnect();
     if (err.name === "Unauthorized") {
       return res
         .status(401)
