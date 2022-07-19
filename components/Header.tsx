@@ -40,8 +40,6 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
   } = useDisclosure();
   const { tasks, isLoading, isError } = useTasks(props.userId);
 
-  console.log(props.firstName, props.lastName);
-
   return (
     <>
       <Flex
@@ -63,10 +61,10 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
           disabled={isLoading || isError}
           leftIcon={
             <BellIcon
-              color={!isLoading && tasks.length > 0 ? "#e31837" : "#767676"}
+              color={!isLoading && tasks.length > 0 ? "#b6922e" : "#767676"}
             />
           }
-          color={!isLoading && tasks.length > 0 ? "#e31837" : "#767676"}
+          color={!isLoading && tasks.length > 0 ? "#b6922e" : "#767676"}
           onClick={onDrawerOpen}
         >
           {tasks ? tasks.length : "0"}
@@ -80,8 +78,8 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
               position="relative"
               w="200px"
               bg="white"
-              color="#e31837"
-              border="#e31837 1px solid"
+              color="#0a2351"
+              border="#0a2351 1px solid"
               isLoading={props.userLoading}
               disabled={props.userLoading}
               onClick={onDropdownToggle}

@@ -41,8 +41,6 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
     isError: isOffersError,
   } = useOffers(props.contactId);
 
-  console.log(offers);
-
   return (
     <Flex
       w="100%"
@@ -157,7 +155,7 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
             <Icon
               as={RiFilePaper2Fill}
               mr={4}
-              color="#e31837"
+              color="#b6922e"
               fontSize="1.2rem"
             />
             <Text
@@ -228,7 +226,7 @@ const DashBoard: React.FunctionComponent<IDashBoardProps> = (props) => {
           bg="whiteAlpha.900"
         >
           <Flex align="center" mb={6}>
-            <Icon as={MdLocalOffer} mr={4} color="#e31837" fontSize="1.2rem" />
+            <Icon as={MdLocalOffer} mr={4} color="#b6922e" fontSize="1.2rem" />
             <Text
               as="h2"
               fontWeight="bold"

@@ -55,7 +55,7 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
                   as="h2"
                   fontSize="1.5rem"
                   fontWeight="bold"
-                  color="#e92731"
+                  color="#0a2351"
                 >
                   {program.mshied_name}
                 </Text>
@@ -154,7 +154,7 @@ const ProgramModal: React.FunctionComponent<IProgramModalProps> = ({
 
           <ModalFooter>
             <Button
-              bgColor="#e92731"
+              bgColor="#b6922e"
               color="white"
               mr={3}
               as="a"

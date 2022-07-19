@@ -16,8 +16,8 @@ const NavItem: React.FunctionComponent<INavItemProps> = ({
       h="50px"
       w="100%"
       p={2}
-      bgColor={active ? "#e92731" : "white"}
-      color={active ? "whiteAlpha.900" : "#63605f"}
+      bgColor={active ? "#0a2351" : "white"}
+      color={active ? "whiteAlpha.900" : "#0a2351"}
       boxShadow={active ? "rgba(0,0,0, 0.35) 0px 5px 15px" : "none"}
       borderRadius="15px"
       style={{ gap: "15px" }}
@@ -27,7 +27,7 @@ const NavItem: React.FunctionComponent<INavItemProps> = ({
       <Icon
         as={navItem.icon}
         fontSize="1.2rem"
-        color={active ? "whiteAlpha.900" : "#e92731"}
+        color={active ? "whiteAlpha.900" : "#0a2351"}
       />
       <Text as="span" w="70%">
         {navItem.label}

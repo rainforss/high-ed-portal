@@ -78,7 +78,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
         >
           Betach Institute
         </Text>
-        <Box w="100%" h="1px" bgColor="#e92731"></Box>
+        <Box w="100%" h="1px" bgColor="#0a2351"></Box>
         <Text as="small">School of Continuing Studies</Text>
       </Flex>
       <Flex w="90%" flexDir="column" style={{ gap: "20px" }}>

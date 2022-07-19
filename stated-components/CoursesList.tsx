@@ -53,20 +53,20 @@ const CoursesList: React.FunctionComponent<ICoursesListProps> = (props) => {
         )}
         {!isLoading && (
           <>
-            <Table variant="striped" colorScheme="red">
+            <Table variant="striped" colorScheme="blue">
               <Thead
                 position="sticky"
                 top="0"
                 zIndex={3}
                 bg="white"
-                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+                boxShadow="inset 0 2px 0 #0a2351, inset 0 -2px 0 #0a2351"
               >
                 <Tr>
-                  <Th color="#e31837">Course</Th>
-                  <Th color="#e31837">Course Section</Th>
-                  <Th color="#e31837">Academic Period</Th>
-                  <Th color="#e31837">Credits Attempted</Th>
-                  <Th color="#e31837">Status</Th>
+                  <Th color="#0a2351">Course</Th>
+                  <Th color="#0a2351">Course Section</Th>
+                  <Th color="#0a2351">Academic Period</Th>
+                  <Th color="#0a2351">Credits Attempted</Th>
+                  <Th color="#0a2351">Status</Th>
                 </Tr>
               </Thead>
 
@@ -81,7 +81,7 @@ const CoursesList: React.FunctionComponent<ICoursesListProps> = (props) => {
                           icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
                           color="#767676"
-                          _hover={{ color: "#e31837" }}
+                          _hover={{ color: "#0a2351" }}
                           transition="ease-in-out 0.5s"
                           fontSize="2xl"
                           mr={4}

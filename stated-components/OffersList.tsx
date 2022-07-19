@@ -69,20 +69,20 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
           </Flex>
         )}
         {!isLoading && (
-          <Table variant="striped" colorScheme="red">
+          <Table variant="striped" colorScheme="blue">
             <Thead
               position="sticky"
               top="0"
               zIndex={3}
               bg="white"
-              boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+              boxShadow="inset 0 2px 0 #0a2351, inset 0 -2px 0 #0a2351"
             >
               <Tr>
-                <Th color="#e31837">Application</Th>
-                <Th color="#e31837">Program</Th>
-                <Th color="#e31837">Prerequisite Program</Th>
-                <Th color="#e31837">Offer Status</Th>
-                <Th color="#e31837">Expiration Date</Th>
+                <Th color="#0a2351">Application</Th>
+                <Th color="#0a2351">Program</Th>
+                <Th color="#0a2351">Prerequisite Program</Th>
+                <Th color="#0a2351">Offer Status</Th>
+                <Th color="#0a2351">Expiration Date</Th>
               </Tr>
             </Thead>
 
@@ -98,7 +98,7 @@ const OffersList: React.FunctionComponent<IOffersListProps> = (props) => {
                         bgColor="white"
                         color="#767676"
                         fontSize="2xl"
-                        _hover={{ color: "#e31837" }}
+                        _hover={{ color: "#0a2351" }}
                         transition="ease-in-out 0.5s"
                         mr={4}
                         href={`/offers/${a.bsi_offerid}`}

@@ -75,7 +75,7 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
   };
   return (
     <Box
-      boxShadow="#e92731 0px 5px 15px"
+      boxShadow="#0a2351 0px 5px 15px"
       borderRadius="5px"
       h="100%"
       p="2rem"
@@ -86,7 +86,7 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
         <>
           <Flex flexDirection="column">
             <Flex justify="space-between" alignItems="center" mb={12}>
-              <Text as="h2" fontWeight="bold" fontSize="1.7rem" color="#e31837">
+              <Text as="h2" fontWeight="bold" fontSize="1.7rem" color="#0a2351">
                 {offers.bsi_name}
               </Text>
               <Badge fontSize="1rem" bg="red.400" color="white">
@@ -187,7 +187,7 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
             <Flex position="absolute" bottom="2rem" left="2rem">
               <ButtonGroup spacing="6">
                 <Button
-                  bg="#e92731"
+                  bg="#0a2351"
                   color="white"
                   disabled={submitting}
                   isLoading={submitting}

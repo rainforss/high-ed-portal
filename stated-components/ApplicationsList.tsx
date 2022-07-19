@@ -53,21 +53,21 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
         )}
         {!isLoading && (
           <>
-            <Table variant="striped" colorScheme="red">
+            <Table variant="striped" colorScheme="blue">
               <Thead
                 position="sticky"
                 top="0"
                 zIndex={3}
                 bg="white"
-                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+                boxShadow="inset 0 2px 0 #0a2351, inset 0 -2px 0 #0a2351"
               >
                 <Tr>
-                  <Th color="#e31837">Applied Program</Th>
-                  <Th color="#e31837">Destined Program</Th>
-                  <Th color="#e31837">Academic Period</Th>
-                  <Th color="#e31837">Application Fee</Th>
-                  <Th color="#e31837">Commitment Fee</Th>
-                  <Th color="#e31837">Application Status</Th>
+                  <Th color="#0a2351">Applied Program</Th>
+                  <Th color="#0a2351">Destined Program</Th>
+                  <Th color="#0a2351">Academic Period</Th>
+                  <Th color="#0a2351">Application Fee</Th>
+                  <Th color="#0a2351">Commitment Fee</Th>
+                  <Th color="#0a2351">Application Status</Th>
                 </Tr>
               </Thead>
 
@@ -82,7 +82,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
                           icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
                           color="#767676"
-                          _hover={{ color: "#e31837" }}
+                          _hover={{ color: "#0a2351" }}
                           transition="ease-in-out 0.5s"
                           fontSize="2xl"
                           mr={4}
@@ -113,7 +113,7 @@ const ApplicationsList: React.FunctionComponent<IApplicationsListProps> = (
               <Button
                 as="a"
                 href="/applications/new"
-                bgColor="#e92731"
+                bgColor="#0a2351"
                 color="white"
                 px={6}
                 leftIcon={<PlusSquareIcon />}
