@@ -240,6 +240,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     name="destinedProgramId"
                     label="Which program of Betach Institute have you applied for"
                     disabled={!!applicationId}
+                    required={values.appliedToTraditional}
                     w="100%"
                     p="1rem"
                   />
@@ -282,6 +283,7 @@ const ApplicationForm: React.FunctionComponent<IApplicationFormProps> = ({
                     name="academicPeriodId"
                     label="In which term would you like to attend to the selected Betach SCS program"
                     disabled={!!applicationId}
+                    required
                     w="100%"
                     p="1rem"
                   />

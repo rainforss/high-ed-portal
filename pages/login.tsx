@@ -120,7 +120,7 @@ const Login: NextPage<ILoginProps> = () => {
                   disabled={props.isSubmitting}
                   mx="auto"
                   my="4rem"
-                  bgColor="#e31837"
+                  bgColor="#0a2351"
                   color="white"
                   px="2rem"
                   py="1.5rem"

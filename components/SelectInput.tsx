@@ -19,6 +19,7 @@ interface ISelectInputProps extends ChakraProps {
   name: string;
   label: string;
   disabled?: boolean;
+  required?: boolean;
 }
 
 const SelectInput: React.FunctionComponent<ISelectInputProps> = ({
@@ -27,11 +28,16 @@ const SelectInput: React.FunctionComponent<ISelectInputProps> = ({
   name,
   label,
   disabled,
+  required,
   ...chakraProps
 }) => {
   const [field, meta, _helpers] = useField(name);
   return (
-    <FormControl isInvalid={!!(meta.error && meta.touched)} {...chakraProps}>
+    <FormControl
+      isInvalid={!!(meta.error && meta.touched)}
+      isRequired={required}
+      {...chakraProps}
+    >
       <FormLabel htmlFor={id}>{label}</FormLabel>
       <Select
         id={id}
