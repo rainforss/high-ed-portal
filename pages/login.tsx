@@ -28,7 +28,7 @@ const Login: NextPage<ILoginProps> = () => {
     <Center
       h="100vh"
       w="100%"
-      bg="linear-gradient(to bottom right, #e31837 0%, #767676 100%)"
+      bg="linear-gradient(to bottom right, #0a2351 0%, #b6922e 100%)"
     >
       <Box
         w="30%"
@@ -51,7 +51,7 @@ const Login: NextPage<ILoginProps> = () => {
           p="1rem"
           py="2rem"
           fontWeight="normal"
-          color="#e31837"
+          color="#0a2351"
           fontSize="2.1rem"
         >
           Student Login
