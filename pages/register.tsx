@@ -45,10 +45,10 @@ const Register: NextPage<IRegisterProps> = (props) => {
         position="relative"
       >
         <Image
-          src="/york_scs_logo.jpg"
-          alt="York SCS"
+          src="/betach_small_logo.png"
+          alt="Betach SCS"
           position="absolute"
-          w="180px"
+          w="100px"
           top="2rem"
           right="3rem"
         />
@@ -127,7 +127,7 @@ const Register: NextPage<IRegisterProps> = (props) => {
                   name="studentId"
                   id="studentId"
                   type="text"
-                  label="York University Student ID"
+                  label="Betach Institute Student ID"
                   w="50%"
                   p="1rem"
                 />

@@ -64,9 +64,9 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
         style={{ gap: "20px" }}
       >
         <Image
-          src="/York_University.png"
-          width="120px"
-          height="120px"
+          src="/betach_small_logo.png"
+          width="100px"
+          height="80px"
           alt="Betach Institute Logo"
           loading="eager"
         />
@@ -76,7 +76,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
           fontSize="1.2rem"
           textTransform="uppercase"
         >
-          York University
+          Betach Institute
         </Text>
         <Box w="100%" h="1px" bgColor="#e92731"></Box>
         <Text as="small">School of Continuing Studies</Text>
