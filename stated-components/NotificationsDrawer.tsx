@@ -38,7 +38,7 @@ const NotificationsDrawer: React.FunctionComponent<
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader color="#e31837" mb={8}>
+        <DrawerHeader color="#0a2351" mb={8}>
           Notifications
         </DrawerHeader>
 
@@ -62,7 +62,7 @@ const NotificationsDrawer: React.FunctionComponent<
                     n[
                       "prioritycode@OData.Community.Display.V1.FormattedValue"
                     ] === "High"
-                      ? "#e31837"
+                      ? "#0a2351"
                       : "#767676"
                   }
                 />
@@ -74,7 +74,7 @@ const NotificationsDrawer: React.FunctionComponent<
 
         <DrawerFooter>
           <Button
-            bgColor="#e31837"
+            bgColor="#0a2351"
             color="white"
             mr={3}
             as="a"

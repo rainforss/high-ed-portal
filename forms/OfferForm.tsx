@@ -73,6 +73,8 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
     });
     setSubmitting(false);
   };
+
+  console.log(offers);
   return (
     <Box
       boxShadow="#0a2351 0px 5px 15px"
@@ -131,7 +133,9 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
                     {offers.bsi_AcademicPeriod.mshied_name}
                   </StatNumber>
                   <StatHelpText>
-                    Academic period to start the prerequisite program
+                    {offers.bsi_PrerequisiteProgram
+                      ? "Academic period to start the prerequisite program"
+                      : "Academic period to start the program"}
                   </StatHelpText>
                 </Stat>
                 <Stat>
@@ -140,7 +144,7 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
                     {new Date(offers.bsi_expirationdate).toLocaleString()}
                   </StatNumber>
                   <StatHelpText>
-                    Academic period to start the prerequisite program
+                    Expiration date of the conditional offer
                   </StatHelpText>
                 </Stat>
               </Flex>
@@ -157,29 +161,54 @@ const OfferForm: React.FunctionComponent<IOfferFormProps> = ({ offerId }) => {
                   </Alert>
                 </Flex>
               )}
-              {!offers.bsi_StudentApplication.bsi_commitmentfeepaid && (
-                <Flex>
-                  <Alert status="warning">
-                    <AlertIcon />
-                    You must pay the commitment fee of amount &nbsp;
-                    <Text as="strong">
-                      ${offers.bsi_PrerequisiteProgram.bsi_commitmentfee}
-                    </Text>
-                    &nbsp; to be able to accept the offer. Click&nbsp;
-                    <Text
-                      as="a"
-                      fontWeight="bold"
-                      href={
-                        offers.bsi_StudentApplication
-                          .bsi_commitmentfeepaymentlink
-                      }
-                    >
-                      here
-                    </Text>
-                    &nbsp;to pay.
-                  </Alert>
-                </Flex>
-              )}
+              {!offers.bsi_StudentApplication.bsi_commitmentfeepaid &&
+                offers.bsi_PrerequisiteProgram && (
+                  <Flex>
+                    <Alert status="warning">
+                      <AlertIcon />
+                      You must pay the commitment fee of amount &nbsp;
+                      <Text as="strong">
+                        ${offers.bsi_PrerequisiteProgram.bsi_commitmentfee}
+                      </Text>
+                      &nbsp; to be able to accept the offer. Click&nbsp;
+                      <Text
+                        as="a"
+                        fontWeight="bold"
+                        href={
+                          offers.bsi_StudentApplication
+                            .bsi_commitmentfeepaymentlink
+                        }
+                      >
+                        here
+                      </Text>
+                      &nbsp;to pay.
+                    </Alert>
+                  </Flex>
+                )}
+              {!offers.bsi_StudentApplication.bsi_commitmentfeepaid &&
+                !offers.bsi_PrerequisiteProgram && (
+                  <Flex>
+                    <Alert status="warning">
+                      <AlertIcon />
+                      You must pay the commitment fee of amount &nbsp;
+                      <Text as="strong">
+                        ${offers.bsi_Program.bsi_commitmentfee}
+                      </Text>
+                      &nbsp; to be able to accept the offer. Click&nbsp;
+                      <Text
+                        as="a"
+                        fontWeight="bold"
+                        href={
+                          offers.bsi_StudentApplication
+                            .bsi_commitmentfeepaymentlink
+                        }
+                      >
+                        here
+                      </Text>
+                      &nbsp;to pay.
+                    </Alert>
+                  </Flex>
+                )}
             </VStack>
           </Flex>
           {(offers.bsi_offerstatus === 861560000 ||

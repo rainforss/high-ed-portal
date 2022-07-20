@@ -61,14 +61,14 @@ const AppointmentsList: React.FunctionComponent<IAppointmentsListProps> = (
                 top="0"
                 zIndex={3}
                 bg="white"
-                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+                boxShadow="inset 0 2px 0 #0a2351, inset 0 -2px 0 #0a2351"
               >
                 <Tr>
-                  <Th color="#e31837">Subject</Th>
-                  <Th color="#e31837">Importance</Th>
-                  <Th color="#e31837">Location</Th>
-                  <Th color="#e31837">Start Time</Th>
-                  <Th color="#e31837">End Time</Th>
+                  <Th color="#0a2351">Subject</Th>
+                  <Th color="#0a2351">Importance</Th>
+                  <Th color="#0a2351">Location</Th>
+                  <Th color="#0a2351">Start Time</Th>
+                  <Th color="#0a2351">End Time</Th>
                 </Tr>
               </Thead>
 
@@ -83,7 +83,7 @@ const AppointmentsList: React.FunctionComponent<IAppointmentsListProps> = (
                           icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
                           color="#767676"
-                          _hover={{ color: "#e31837" }}
+                          _hover={{ color: "#0a2351" }}
                           transition="ease-in-out 0.5s"
                           fontSize="2xl"
                           mr={4}

@@ -59,13 +59,13 @@ const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
                 top="0"
                 zIndex={3}
                 bg="white"
-                boxShadow="inset 0 2px 0 #e31837, inset 0 -2px 0 #e31837"
+                boxShadow="inset 0 2px 0 #0a2351, inset 0 -2px 0 #0a2351"
               >
                 <Tr>
-                  <Th color="#e31837">Subject</Th>
-                  <Th color="#e31837">Importance</Th>
-                  <Th color="#e31837">Description</Th>
-                  <Th color="#e31837">Due Date</Th>
+                  <Th color="#0a2351">Subject</Th>
+                  <Th color="#0a2351">Importance</Th>
+                  <Th color="#0a2351">Description</Th>
+                  <Th color="#0a2351">Due Date</Th>
                 </Tr>
               </Thead>
 
@@ -80,7 +80,7 @@ const NotificationsList: React.FunctionComponent<INotificationsListProps> = (
                           icon={<Icon as={RiFileList3Fill} />}
                           bgColor="white"
                           color="#767676"
-                          _hover={{ color: "#e31837" }}
+                          _hover={{ color: "#0a2351" }}
                           transition="ease-in-out 0.5s"
                           fontSize="2xl"
                           mr={4}
